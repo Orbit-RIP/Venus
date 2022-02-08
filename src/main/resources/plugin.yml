@@ -1,0 +1,9 @@
+name: HCFactions
+version: 1.0
+author: Alfie
+main: net.frozenorb.foxtrot.Foxtrot
+depend:
+  - Proton
+softdepend:
+  - ProtocolLib
+

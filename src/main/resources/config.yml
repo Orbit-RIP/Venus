@@ -1,0 +1,140 @@
+Mongo:
+  Host: '127.0.0.1'
+  DBName: 'HCTeams'
+serverName: HCTeams
+networkWebsite: vexor.cc
+statsRoot: vexor.cc/hcf
+join_message:
+  - "&8&m------------------------------"
+  - "&fWelcome to &3&lVexor &fHCF Map 1"
+  - " "
+  - "&8» &fFaction Size: &78 Man, 0 Ally"
+  - "&8» &fMap Kit: &7Protection 1, Sharpness 1"
+  - "&8» &fBlocking Up: &aEnabled"
+  - "&8» &fTeamspeak: &7vexor"
+  - "&8» &fDiscord: &7invite.gg/vexorcc"
+  - "&8&m------------------------------"
+blocked-nicks:
+  - 'nigger'
+partner:
+  material: 'ENDER_CHEST'
+  name: '&a&lAbility Package'
+  message: '&6&lVexor &7| &fYou have open a &a&lAbility Package'
+  lore:
+    - '&7Right click to open your package'
+cracker:
+  material: 'BLAZE_ROD'
+  name: '&a&lC&c&lH&a&lR&c&lI&a&lS&c&lT&a&lM&c&lA&a&lS &c&lC&a&lR&c&lA&a&lC&c&lK&a&lE&c&lR '
+  message: '&6&lVexor &7| &fYou have open a &a&lC&c&lH&a&lR&c&lI&a&lS&c&lT&a&lM&c&lA&a&lS &c&lC&a&lR&c&lA&a&lC&c&lK&a&lE&c&lR '
+  lore:
+    - '&7Crack open this item to receive some goodies!'
+tab:
+  serverName: '&6&lHCF'
+  sectionColor: '&5'
+  infoColor: '&e'
+nightmare:
+  enabled: true
+  worldName: "NightmareEvent"
+glowstoneMountain: false
+cavern: false
+startingTimer: false
+forceInvites: true
+squads: false
+idleCheck: true
+uhcHealing: false
+passiveTag: true
+allowBoosting: false
+waterPlacementInClaims: false
+blockRemoval: false
+rodPrevention: false
+skybridgePrevention: false
+reduceArmorDamage: true
+blockEntitiesThroughPortals: true
+archerTagColor: YELLOW
+defaultRelationColor: RED
+legions: false
+solar: false
+UHCF: false
+pvpClasses:
+  archer: true
+  bard: true
+  rogue: true
+  ranger: true
+minerWorld:
+  regen:
+    COAL_ORE: 30
+    IRON_ORE: 60
+    GOLD_ORE: 90
+    DIAMOND_ORE: 120
+
+BLOCKED_POTIONS: #put the data value
+  - 8201
+  - 8233
+  - 16393
+  - 8265
+  - 16425
+  - 16457
+  - 16420
+  - 8228
+  - 8193
+  - 8225
+  - 8257
+  - 16385
+  - 16417
+  - 16449
+  - 16452
+  - 8260
+  - 8232
+  - 8264
+  - 16424
+  - 16456
+  - 8266
+  - 16458
+  - 16392
+  - 8268
+  - 8236
+  - 16460
+  - 16428
+
+potions:
+  REGEN:
+    splash: false
+    drinkables: false
+  SPEED:
+    splash: true
+    drinkables: true
+  FIRE_RESISTANCE:
+    splash: true
+    drinkables: true
+  POISON:
+    splash: true
+    drinkables: false
+  INSTANT_HEAL:
+    splash: true
+    drinkables: true
+  NIGHT_VISION:
+    splash: true
+    drinkables: true
+  WEAKNESS:
+    splash: false
+    drinkables: false
+  STRENGTH:
+    splash: false
+    drinkables: false
+  SLOWNESS:
+    splash: true
+    drinkables: false
+  INSTANT_DAMAGE:
+    splash: false
+    drinkables: false
+  WATER_BREATHING:
+    splash: true
+    drinkables: true
+  INVISIBILITY:
+    splash: false
+    drinkables: false
+Filter:
+  - 'nigger'
+reclaim:
+  King:
+    - "crate givekey {player} Test 1"

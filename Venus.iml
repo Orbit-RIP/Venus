@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/annotations" isTestSource="false" generated="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Maven: net.frozenorb:spigot-parent:dev-SNAPSHOT">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spigot.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: net.frozenorb:qLib:1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/proton-1.0-SNAPSHOT.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: rip.orbit:oCrates:1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oCrates-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: org.inventivetalent.particle:particleapi:2.1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/ParticleAPI_v2.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: cc.invictusgames:Invictus:1.0-SNAPSHOT">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/Nebula-1.0-DEV.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.comphenix.protocol:ProtocolLib:1.7.4">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/ProtocolLib-v1_7_R4-3.7.0-BETA.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.18" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.sk89q.worldedit:worldedit-core:6.0.0-SNAPSHOT">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/WorldEdit.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.6" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: me.developercole:holodisplays:1.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/HolographicDisplays.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Maven: org.mongodb:mongo-java-driver:3.10.2" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: me.jamesgavin:GodKits:Demonic">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/enchants-1.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.lunarclient:lunarclient-api:2.1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/LAPI.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>

@@ -1,0 +1,6 @@
+crackers:
+  switcher:
+    commands:
+      - "ability give %player% SWITCHER 3"
+    items:
+      - "DIAMOND_BLOCK 32"
