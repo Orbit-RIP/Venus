@@ -4,24 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4578854-22e0-46c8-ac40-e484e78df7ed" name="Default Changelist" comment=".." />
+    <list default="true" id="cd9976ed-d413-46c8-ba31-e290354f3383" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="FxmlFile" />
         <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -32,19 +34,13 @@
     </file-type-list>
   </component>
   <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="workOffline" value="true" />
-      </MavenGeneralSettings>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
-  </component>
-  <component name="ProjectId" id="1w0QXN3FMBUO8km5CmjgzN5WNDd" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectId" id="1uYSBrN3byXtcmYeXA4GvY5aeqi" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -52,47 +48,31 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="zielu.gittoolbox.app.config.v2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/util/item" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="net.frozenorb.foxtrot.redeem.menu" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\Orbit-FIles\new src\Venus\lib" />
-      <recent name="F:\Vexor\vHCF\lib" />
-      <recent name="F:\Vexor\vHCF\src\main\java\net\frozenorb\foxtrot\misc\crackers" />
-      <recent name="F:\Vexor\vHCF\src\main\java\net\frozenorb\foxtrot" />
-      <recent name="F:\Vexor\vHCF\src\main\java\net\frozenorb\foxtrot\crate" />
+      <recent name="D:\SourceCodes\OrbitTeams\src\main\java\rip\orbit\hcteams\util\item" />
+      <recent name="D:\SourceCodes\OrbitTeams\src\main\java\rip\orbit\hcteams\server" />
+      <recent name="D:\SourceCodes\OrbitTeams\libs" />
+      <recent name="D:\SourceCodes\OrbitTeams\src\main\java\rip\orbit\hcteams\commands" />
+      <recent name="D:\SourceCodes\OrbitTeams\src\main\java\rip\orbit\hcteams\team" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\Orbit-FIles\new src\Venus\src\main\resources" />
-      <recent name="F:\Orbit-FIles\new src\Venus\lib" />
-      <recent name="F:\Vexor\vHCF\lib" />
-      <recent name="F:\Vexor\vHCF\src\main\java\net\frozenorb\foxtrot\chat" />
-      <recent name="F:\Vexor (HCRival)\vHCF\lib" />
-    </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="net.frozenorb.foxtrot.commands" />
+      <recent name="D:\SourceCodes\OrbitTeams\src\main\java\rip\orbit\hcteams" />
+      <recent name="D:\SourceCodes\OrbitTeams" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="net.frozenorb.foxtrot.shops.blockshop.menu.button" />
-      <recent name="net.frozenorb.foxtrot.shops.blockshop.menu" />
-      <recent name="net.frozenorb.foxtrot.shops.blockshop.menu.type.button" />
-      <recent name="net.frozenorb.foxtrot.shops.blockshop.menu.type" />
-      <recent name="net.frozenorb.foxtrot.shops.sellshop" />
+      <recent name="rip.orbit.hcteams.events.patch" />
+      <recent name="rip.orbit.hcteams.events" />
+      <recent name="rip.orbit.hcteams.map" />
+      <recent name="rip.orbit.hcteams.team.commands" />
+      <recent name="rip.orbit.hcteams.team.commands.team" />
     </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="mvn " />
-      <command value="mvn clean install" />
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="HCTeams [clean,install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
@@ -123,174 +103,65 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d4578854-22e0-46c8-ac40-e484e78df7ed" name="Default Changelist" comment="" />
-      <created>1627593066328</created>
+      <changelist id="cd9976ed-d413-46c8-ba31-e290354f3383" name="Default Changelist" comment="" />
+      <created>1624840896245</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1627593066328</updated>
+      <updated>1624840896245</updated>
+      <workItem from="1624840915060" duration="14114000" />
+      <workItem from="1624860286791" duration="13587000" />
+      <workItem from="1625029518950" duration="3837000" />
+      <workItem from="1625070378518" duration="8258000" />
+      <workItem from="1625087346967" duration="2481000" />
+      <workItem from="1625096828263" duration="19889000" />
+      <workItem from="1625181824860" duration="2104000" />
+      <workItem from="1625199983100" duration="37569000" />
+      <workItem from="1625618433636" duration="968000" />
+      <workItem from="1625809860233" duration="9862000" />
+      <workItem from="1625887331427" duration="17215000" />
+      <workItem from="1625922372095" duration="25493000" />
+      <workItem from="1626237891961" duration="20000" />
+      <workItem from="1626504616472" duration="2389000" />
+      <workItem from="1626564097433" duration="37000" />
+      <workItem from="1626593674873" duration="4865000" />
+      <workItem from="1626668971331" duration="24282000" />
+      <workItem from="1626926370819" duration="3405000" />
+      <workItem from="1626967121314" duration="6168000" />
+      <workItem from="1626990765805" duration="17000" />
+      <workItem from="1627048452561" duration="16492000" />
+      <workItem from="1627301898702" duration="3178000" />
+      <workItem from="1627421457687" duration="471000" />
+      <workItem from="1627484431359" duration="654000" />
+      <workItem from="1627515825353" duration="14263000" />
+      <workItem from="1627615677294" duration="14504000" />
+      <workItem from="1627772886971" duration="5956000" />
+      <workItem from="1627784329824" duration="3763000" />
+      <workItem from="1627923259831" duration="856000" />
+      <workItem from="1628019121534" duration="13089000" />
+      <workItem from="1628345618843" duration="803000" />
+      <workItem from="1628547946386" duration="3274000" />
+      <workItem from="1628634706929" duration="687000" />
+      <workItem from="1628921885777" duration="25323000" />
+      <workItem from="1628994120926" duration="15094000" />
+      <workItem from="1629243276372" duration="30104000" />
+      <workItem from="1629519098220" duration="15469000" />
+      <workItem from="1629575012157" duration="52687000" />
+      <workItem from="1630102715528" duration="22924000" />
+      <workItem from="1630890158536" duration="25992000" />
+      <workItem from="1631141939785" duration="13776000" />
+      <workItem from="1631373717580" duration="7552000" />
+      <workItem from="1631385736438" duration="7538000" />
+      <workItem from="1631437202186" duration="28746000" />
+      <workItem from="1631932323989" duration="24980000" />
     </task>
-    <task id="LOCAL-00001" summary="added credits">
-      <created>1628316863110</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1628316863110</updated>
-    </task>
-    <task id="LOCAL-00002" summary="no clue what i have done">
-      <created>1628989677300</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1628989677300</updated>
-    </task>
-    <task id="LOCAL-00003" summary="fixing couple bugs">
-      <created>1629038074548</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1629038074548</updated>
-    </task>
-    <task id="LOCAL-00004" summary="afghauisldb">
-      <created>1629039158509</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1629039158509</updated>
-    </task>
-    <task id="LOCAL-00005" summary="fixing archer tag">
-      <created>1629039192367</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1629039192367</updated>
-    </task>
-    <task id="LOCAL-00006" summary="fixed a couple bugs">
-      <created>1629118896020</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1629118896021</updated>
-    </task>
-    <task id="LOCAL-00007" summary="didn't commit in like 5 days soz &lt;3">
-      <created>1629634946236</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1629634946236</updated>
-    </task>
-    <task id="LOCAL-00008" summary="a">
-      <created>1629659092127</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1629659092127</updated>
-    </task>
-    <task id="LOCAL-00009" summary="shop">
-      <created>1629659259517</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1629659259517</updated>
-    </task>
-    <task id="LOCAL-00010" summary="a">
-      <created>1629730773543</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1629730773543</updated>
-    </task>
-    <task id="LOCAL-00011" summary=".">
-      <created>1629791761146</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1629791761147</updated>
-    </task>
-    <task id="LOCAL-00012" summary=".">
-      <created>1630456661184</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1630456661184</updated>
-    </task>
-    <task id="LOCAL-00013" summary=".">
-      <created>1630457578125</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1630457578125</updated>
-    </task>
-    <task id="LOCAL-00014" summary="for cutie boy dust">
-      <created>1630801296537</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1630801296537</updated>
-    </task>
-    <task id="LOCAL-00015" summary="for cutie boy dust">
-      <created>1630802686772</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1630802686772</updated>
-    </task>
-    <task id="LOCAL-00016" summary="1st commit in 1 1/2 months swag">
-      <created>1634512798859</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1634512798859</updated>
-    </task>
-    <task id="LOCAL-00017" summary="get given a kit on ktk and fixed lunar client api and fixed ghost class">
-      <created>1634678859063</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1634678859063</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="added credits" />
-    <MESSAGE value="no clue what i have done" />
-    <MESSAGE value="fixing couple bugs" />
-    <MESSAGE value="afghauisldb" />
-    <MESSAGE value="fixing archer tag" />
-    <MESSAGE value="fixed a couple bugs" />
-    <MESSAGE value="didn't commit in like 5 days soz &lt;3" />
-    <MESSAGE value="shop" />
-    <MESSAGE value="a" />
-    <MESSAGE value="." />
-    <MESSAGE value="for cutie boy dust" />
-    <MESSAGE value="1st commit in 1 1/2 months swag" />
-    <MESSAGE value="get given a kit on ktk and fixed lunar client api and fixed ghost class" />
-    <MESSAGE value=".." />
-    <option name="LAST_COMMIT_MESSAGE" value=".." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/net/frozenorb/foxtrot/shops/oldsellshop/menu/SellItemButton.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

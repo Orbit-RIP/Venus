@@ -1,0 +1,34 @@
+kitMap: false
+allyLimit: 0
+teamSize: 8
+regenTimeDeath: 60
+regenTimeRaidable: 60
+scoreboardTitle: "edit on config.yml"
+mapStartedString: "Map 3 - Started January 31, 2015"
+warzone: 1000
+netherBuffer: 150
+worldBuffer: 300
+endPortalLocation: "1000, 1000"
+border: 3000
+goppleCooldown: 3600
+fastSmeltEnabled: true
+looting:
+  base: 1.0
+  level1: 1.2
+  level2: 1.4
+  level3: 2
+crafting:
+  gopple: false
+  reducedMelon: true
+deathban: # minutes
+  Partner: 120
+  Famous: 120
+  Youtuber: 120
+  Orbit: 120
+  Platinum: 120
+  Diamond: 120
+  Gold: 120
+  Iron: 120
+  DEFAULT: 120
+minForceInviteMembers: 5
+dtrIncrementMultiplier: 4.5

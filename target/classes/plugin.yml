@@ -1,9 +1,6 @@
-name: HCFactions
-version: 1.0
-author: Alfie
-main: net.frozenorb.foxtrot.Foxtrot
-depend:
-  - Proton
-softdepend:
-  - ProtocolLib
-
+name: Neptune
+version: beta-0.1
+author: Orbit Development Team
+main: rip.orbit.hcteams.HCF
+softdepend: [ CheatBreakerAPI ]
+depend: [ Proton, ProtocolLib ]

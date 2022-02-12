@@ -12,9 +12,14 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="protocollib-repo" />
-      <option name="name" value="protocollib-repo" />
-      <option name="url" value="http://repo.dmulloy2.net/content/groups/public/" />
+      <option name="id" value="fawe-repo" />
+      <option name="name" value="fawe-repo" />
+      <option name="url" value="http://ci.athion.net/job/FastAsyncWorldEdit/ws/mvn/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="everything" />
+      <option name="name" value="everything" />
+      <option name="url" value="http://repo.citizensnpcs.co/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
@@ -27,14 +32,9 @@
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="ess-repo" />
-      <option name="name" value="ess-repo" />
-      <option name="url" value="http://repo.ess3.net/content/groups/essentials" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="techcable-repo" />
-      <option name="name" value="techcable-repo" />
-      <option name="url" value="https://repo.techcable.net/content/groups/public/" />
+      <option name="id" value="dmulloy2-repo" />
+      <option name="name" value="dmulloy2-repo" />
+      <option name="url" value="https://repo.dmulloy2.net/nexus/repository/public/" />
     </remote-repository>
   </component>
 </project>

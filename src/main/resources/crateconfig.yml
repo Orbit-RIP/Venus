@@ -4,8 +4,8 @@ crates:
   example:
     slot: 5
     skull:
-      use-skull: true
-      owner: "blackmanalfie"
+      use-skull: false
+      owner: "example"
 
     item: "PAPER" # if you have use-skull: true, then you want to make this SKULL_ITEM
     data: 0
