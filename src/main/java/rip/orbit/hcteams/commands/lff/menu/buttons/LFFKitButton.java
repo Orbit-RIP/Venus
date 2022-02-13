@@ -35,7 +35,7 @@ public class LFFKitButton extends Button {
     
     @Override
     public List<String> getDescription(Player player) {
-        return Arrays.asList(ChatColor.WHITE + "Click to choose the", ChatColor.GRAY + " » " + ChatColor.GOLD + kitName + ChatColor.WHITE + " Class.");
+        return Arrays.asList(ChatColor.WHITE + "Click to choose the" + ChatColor.GOLD + kitName + ChatColor.WHITE + " Class.");
     }
 
     

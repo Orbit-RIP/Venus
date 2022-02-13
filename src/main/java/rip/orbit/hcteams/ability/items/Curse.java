@@ -30,7 +30,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Curse extends Ability {
 
 	public Cooldowns cd = new Cooldowns();
-	public Cooldowns soupCooldown = new Cooldowns();
 	public Cooldowns souped = new Cooldowns();
 	public ConcurrentHashMap<UUID, Integer> hits = new ConcurrentHashMap<>();
 
@@ -186,19 +185,12 @@ public class Curse extends Ability {
 
 			Player player = event.getPlayer();
 
-			if (player.getHealth() <= 19 && !soupCooldown.onCooldown(player)) {
+			if (player.getHealth() <= 19) {
 				double current = player.getHealth();
 				double max = player.getMaxHealth();
 
 				player.getItemInHand().setType(Material.BOWL);
 				player.setHealth(Math.min(max, current + 7D));
-				soupCooldown.applyCooldown(player, 4);
-			} else {
-				if (soupCooldown.onCooldown(player)) {
-					player.sendMessage(CC.chat("&cYou cannot soup for " + soupCooldown.getRemaining(player)));
-				} else {
-					player.sendMessage(CC.chat("&cYou have to lose health before you do that!"));
-				}
 			}
 		}
 	}

@@ -96,9 +96,7 @@ public class Regeneration extends Ability {
 
 			List<String> hitMsg = Arrays.asList(
 					"",
-					"&dYou &fhave just activated a " + displayName() + "&f.",
-					" ",
-					"&6&l┃ &fYou now have " + displayName() + " &ffor 5 seconds",
+					"&dYou have just used &l" + displayName() + "&d.",
 					"");
 
 

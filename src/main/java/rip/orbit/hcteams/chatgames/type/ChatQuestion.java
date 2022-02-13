@@ -28,12 +28,10 @@ public class ChatQuestion extends ChatGame {
 
 	private final List<Question> questions = Arrays.asList(
 			new Question("What is the name of the server you are currently playing?", Arrays.asList("Orbit", "Orbit.rip")),
-			new Question("What kit gives you tons of ability items & a full Protection 2 Diamond Set with Custom Enchants including Ability Master I?", Collections.singletonList("Autumn")),
 			new Question("What time do our SOTW's take place?", Arrays.asList("Saturday 3 PM EST", "Saturday @ 3 PM EST")),
 			new Question("What is the top rank?", Collections.singletonList("Orbit")),
-			new Question("Who is the developer of the server, but also an owner?", Collections.singletonList("LBuddyBoy")),
 			new Question("What is the rank you can get by running /freerank?", Collections.singletonList("Star")),
-			new Question("Who is the main owner of the server, but mainly manages and innovates the server?", Collections.singletonList("Premieres"))
+			new Question("Who is the main owner of the server, but mainly manages and innovates the server?", Arrays.asList("Branched", "blackmanalfie", "LBuddyB0y"))
 	);
 
 	@Override

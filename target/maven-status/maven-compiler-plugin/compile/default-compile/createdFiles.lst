@@ -38,7 +38,7 @@ rip\orbit\hcteams\ability\generator\GeneratorHandler$1.class
 rip\orbit\hcteams\map\game\GameType.class
 rip\orbit\hcteams\ability\items\NinjaStar.class
 rip\orbit\hcteams\events\koth\commands\koth\KOTHScheduleCommand.class
-rip\orbit\hcteams\blockshop\type\ShopType.class
+rip\orbit\hcteams\shops\buyshop\command\BuyShopCommand.class
 rip\orbit\hcteams\map\duel\arena\DuelArena.class
 rip\orbit\hcteams\map\game\GameHandlerConfig.class
 rip\orbit\hcteams\customtimer\command\CustomTimerCommand$1.class
@@ -53,6 +53,7 @@ rip\orbit\hcteams\util\cooldown\form\DateTimeFormats.class
 rip\orbit\hcteams\team\commands\team\subclaim\TeamSubclaimListCommand.class
 rip\orbit\hcteams\nametags\PlayerScoreboard.class
 rip\orbit\hcteams\nametags\reflection\ScoreboardReflection_1_7$PacketPlayOutScoreboardScoreWrapper.class
+rip\orbit\hcteams\shops\blockshop\menu\RedstoneBlockMenu.class
 rip\orbit\hcteams\util\Logout.class
 rip\orbit\hcteams\events\EventParameterType.class
 rip\orbit\hcteams\chatgames\type\ChatQuestion$2.class
@@ -67,6 +68,7 @@ rip\orbit\hcteams\util\SpawnTeleport.class
 rip\orbit\hcteams\settings\menu\button\SettingButton.class
 rip\orbit\hcteams\util\Crowbar.class
 rip\orbit\hcteams\map\killstreaks\orbittypes\PermSpeed2.class
+rip\orbit\hcteams\shops\buyshop\menu\BuyShopMenu.class
 rip\orbit\hcteams\deathmessage\trackers\PVPTracker$PVPDamage.class
 rip\orbit\hcteams\util\menu\page\MenuListener.class
 rip\orbit\hcteams\deathmessage\trackers\GeneralTracker$GeneralDamage.class
@@ -77,10 +79,10 @@ rip\orbit\hcteams\commands\ReviveCommand.class
 rip\orbit\hcteams\map\game\arena\ArenaCommands.class
 rip\orbit\hcteams\team\commands\team\TeamCaptainCommand.class
 rip\orbit\hcteams\util\CuboidRegion.class
-rip\orbit\hcteams\blockshop\type\BlockType.class
 rip\orbit\hcteams\team\commands\pvp\PvPTimeCommand.class
 rip\orbit\hcteams\persist\maps\EnemyColorMap.class
 rip\orbit\hcteams\map\game\Game$3.class
+rip\orbit\hcteams\shops\blockshop\menu\StainedGlassMenu.class
 rip\orbit\hcteams\deathmessage\trackers\ArrowTracker$ArrowDamageByTurret.class
 rip\orbit\hcteams\team\commands\SetTeamMeteorsCommand.class
 rip\orbit\hcteams\listener\BlockConvenienceListener.class
@@ -104,6 +106,8 @@ rip\orbit\hcteams\ability\items\Recon$1.class
 rip\orbit\hcteams\util\object\Elevator.class
 rip\orbit\hcteams\events\conquest\ConquestHandler.class
 rip\orbit\hcteams\polls\menu\PollMenu$PollButton.class
+rip\orbit\hcteams\shops\buyshop\HCFBuyShopBlocks.class
+rip\orbit\hcteams\shops\sellshop\menu\SellShopMenu.class
 rip\orbit\hcteams\team\commands\FreezeRostersCommand.class
 rip\orbit\hcteams\persist\maps\WrappedBalanceMap.class
 rip\orbit\hcteams\util\menu\page\PagedMenu.class
@@ -118,7 +122,6 @@ rip\orbit\hcteams\team\commands\team\TeamTPCommand.class
 rip\orbit\hcteams\commands\staff\CopyToCommand.class
 rip\orbit\hcteams\listener\BorderListener.class
 rip\orbit\hcteams\tab\DefaultFoxtrotTabLayoutProvider.class
-rip\orbit\hcteams\blockshop\menu\BlockShopMenu$ClayCategoryButton.class
 rip\orbit\hcteams\redeem\map\PartnerRedeemMap.class
 rip\orbit\hcteams\map\stats\command\StatsCommand.class
 rip\orbit\hcteams\team\commands\team\TeamClaimCommand$1.class
@@ -130,6 +133,7 @@ rip\orbit\hcteams\team\commands\team\subclaim\TeamSubclaimCommand.class
 rip\orbit\hcteams\chatgames\ChatGameHandler$1.class
 rip\orbit\hcteams\map\game\command\SetLobbyCommand.class
 rip\orbit\hcteams\commands\SetEndExitCommand.class
+rip\orbit\hcteams\shops\blockshop\menu\type\button\NetherPurchaseButton.class
 rip\orbit\hcteams\util\object\Cooldowns.class
 rip\orbit\hcteams\team\menu\BaseMenu$1$1.class
 rip\orbit\hcteams\commands\FDToggleCommand.class
@@ -138,12 +142,14 @@ rip\orbit\hcteams\util\PotionUtils.class
 rip\orbit\hcteams\team\commands\team\subclaim\TeamSubclaimCommand$Selection.class
 rip\orbit\hcteams\chatgames\ChatGame.class
 rip\orbit\hcteams\team\menu\BaseMenu$1$2.class
+rip\orbit\hcteams\shops\blockshop\menu\type\StainedClayBlocks.class
 rip\orbit\hcteams\map\kits\editor\button\SaveButton.class
 rip\orbit\hcteams\team\commands\team\TeamDepositCommand.class
 rip\orbit\hcteams\map\kits\KitManager.class
 rip\orbit\hcteams\team\teamupgrades\menu\DTRRegenMenu$1.class
 rip\orbit\hcteams\persist\maps\ClaimOnSbMap.class
 rip\orbit\hcteams\commands\staff\EOTWCommand.class
+rip\orbit\hcteams\redeem\menu\RedeemMenu$1.class
 rip\orbit\hcteams\util\object\Portal.class
 rip\orbit\hcteams\pvpclasses\pvpclasses\BardClass$3.class
 rip\orbit\hcteams\listener\TeamListener.class
@@ -153,7 +159,6 @@ rip\orbit\hcteams\map\killstreaks\orbittypes\FireRes.class
 rip\orbit\hcteams\map\game\arena\select\SelectionListeners.class
 rip\orbit\hcteams\team\commands\team\TeamSetHQCommand.class
 rip\orbit\hcteams\team\claims\VisualClaim$2.class
-rip\orbit\hcteams\blockshop\menu\category\CategoryMenu.class
 rip\orbit\hcteams\events\region\carepackage\CarePackageHandler.class
 rip\orbit\hcteams\team\commands\team\TeamUnShadowMuteCommand.class
 rip\orbit\hcteams\listener\fixes\AntiGlitchListener$1.class
@@ -183,6 +188,7 @@ rip\orbit\hcteams\events\EventScheduledTime.class
 rip\orbit\hcteams\server\RegionData$1.class
 rip\orbit\hcteams\team\menu\button\OpenMuteMenuButton.class
 rip\orbit\hcteams\team\claims\VisualClaim$1.class
+rip\orbit\hcteams\shops\blockshop\menu\type\RedstoneBlocks.class
 rip\orbit\hcteams\commands\staff\SaveRedisCommand.class
 rip\orbit\hcteams\listener\EnchantmentLimiterListener$1.class
 rip\orbit\hcteams\team\commands\team\TeamStuckCommand$1$1.class
@@ -273,6 +279,7 @@ rip\orbit\hcteams\ability\items\GuardianAngel.class
 rip\orbit\hcteams\listener\fixes\PotionLimiterListener$1.class
 rip\orbit\hcteams\settings\menu\display\DisplayMenu.class
 rip\orbit\hcteams\util\DiscordLogger.class
+rip\orbit\hcteams\shops\blockshop\menu\type\BuildingBlocks.class
 rip\orbit\hcteams\team\commands\team\TeamUninviteCommand$1$1.class
 rip\orbit\hcteams\persist\StringPersistMap$1.class
 rip\orbit\hcteams\map\game\command\SetGemRequirementCommand.class
@@ -284,6 +291,8 @@ rip\orbit\hcteams\team\commands\team\TeamHelpCommand.class
 rip\orbit\hcteams\listener\kits\DisposibalSignListener.class
 rip\orbit\hcteams\persist\maps\PlaytimeMap.class
 rip\orbit\hcteams\util\object\ChatUtils.class
+rip\orbit\hcteams\shops\blockshop\menu\button\SellShopButton.class
+rip\orbit\hcteams\shops\blockshop\menu\type\button\RedstonePurchaseButton.class
 rip\orbit\hcteams\team\commands\RecalculatePointsCommand.class
 rip\orbit\hcteams\listener\FoxListener.class
 rip\orbit\hcteams\util\item\ItemMaker.class
@@ -297,6 +306,7 @@ rip\orbit\hcteams\commands\staff\LastInvCommand.class
 rip\orbit\hcteams\team\commands\team\TeamUnallyCommand.class
 rip\orbit\hcteams\deathmessage\event\PlayerKilledEvent.class
 rip\orbit\hcteams\util\object\Webhook$EmbedObject$Image.class
+rip\orbit\hcteams\shops\blockshop\menu\type\button\ChristmasPurchaseButton.class
 rip\orbit\hcteams\util\StringUtils$1.class
 rip\orbit\hcteams\util\object\Webhook$JSONObject.class
 rip\orbit\hcteams\team\menu\KickPlayersMenu.class
@@ -316,6 +326,7 @@ rip\orbit\hcteams\map\stats\command\KillstreaksCommand.class
 rip\orbit\hcteams\events\koth\commands\koth\KOTHDeactivateCommand.class
 rip\orbit\hcteams\server\Deathban.class
 rip\orbit\hcteams\team\claims\Claim$1.class
+rip\orbit\hcteams\shops\blockshop\menu\type\button\BuildingPurchaseButton.class
 rip\orbit\hcteams\util\Betrayer.class
 rip\orbit\hcteams\team\teamupgrades\enums\MeteorUpgrades.class
 rip\orbit\hcteams\map\game\Game$2.class
@@ -327,10 +338,12 @@ rip\orbit\hcteams\team\commands\team\TeamForceInviteCommand.class
 rip\orbit\hcteams\server\spawnershop\SpawnerShopMenu$3.class
 rip\orbit\hcteams\map\kits\KitListener.class
 rip\orbit\hcteams\reclaim\ReclaimMap.class
+rip\orbit\hcteams\shops\blockshop\menu\type\ChristmasBlocks.class
 rip\orbit\hcteams\util\item\InventorySerialization$1.class
 rip\orbit\hcteams\util\object\Webhook$EmbedObject$Field.class
 rip\orbit\hcteams\ability\items\pocketbard\Resistance.class
 rip\orbit\hcteams\commands\lff\menu\buttons\LFFKitButton.class
+rip\orbit\hcteams\shops\blockshop\menu\type\StainedGlassBlocks.class
 rip\orbit\hcteams\listener\CombatLoggerListener$1.class
 rip\orbit\hcteams\events\koth\commands\koth\KOTHCommand.class
 rip\orbit\hcteams\team\commands\team\TeamInfoCommand$1.class
@@ -352,6 +365,7 @@ rip\orbit\hcteams\commands\staff\WipeDeathbansCommand.class
 rip\orbit\hcteams\polls\command\PollCommand$1.class
 rip\orbit\hcteams\redeem\RedeemHandler.class
 rip\orbit\hcteams\team\menu\SelectNewLeaderMenu.class
+rip\orbit\hcteams\shops\blockshop\menu\button\ChristmasButton.class
 rip\orbit\hcteams\events\koth\commands\koth\KOTHTimeCommand.class
 rip\orbit\hcteams\listener\TeamListener$1.class
 rip\orbit\hcteams\map\kits\command\KitEditorCommand.class
@@ -359,6 +373,7 @@ rip\orbit\hcteams\customtimer\command\CustomTimerCommand$2.class
 rip\orbit\hcteams\map\kits\command\KitEditorItemsCommand.class
 rip\orbit\hcteams\team\commands\team\TeamDisbandCommand.class
 rip\orbit\hcteams\commands\FixCommands.class
+rip\orbit\hcteams\shops\buyshop\KitsBuyShopBlocks.class
 rip\orbit\hcteams\server\commands\betrayer\BetrayerInfoCommand.class
 rip\orbit\hcteams\polls\Poll.class
 rip\orbit\hcteams\map\MapHandler.class
@@ -366,7 +381,9 @@ rip\orbit\hcteams\pvpclasses\PvPClassHandler.class
 rip\orbit\hcteams\nametags\reflection\ScoreboardReflection_1_7$PacketPlayOutScoreboardTeamWrapper.class
 rip\orbit\hcteams\team\claims\VisualClaim.class
 rip\orbit\hcteams\team\commands\team\TeamMaxOnlineCommand.class
+rip\orbit\hcteams\shops\blockshop\menu\type\button\StainedClayPurchaseButton.class
 rip\orbit\hcteams\events\region\cavern\CavernHandler.class
+rip\orbit\hcteams\shops\blockshop\menu\button\BuyShopButton.class
 rip\orbit\hcteams\listener\StatTrakListener.class
 rip\orbit\hcteams\commands\ToggleChatCommand.class
 rip\orbit\hcteams\team\teamupgrades\menu\BardMenu$1.class
@@ -387,6 +404,7 @@ rip\orbit\hcteams\server\uhc\UHCListener$1.class
 rip\orbit\hcteams\team\commands\TeamPointBreakDownCommand.class
 rip\orbit\hcteams\team\commands\team\subclaim\TeamSubclaimRemovePlayerCommand.class
 rip\orbit\hcteams\chatgames\command\ChatGameCommand.class
+rip\orbit\hcteams\shops\blockshop\command\BlockShopCommand.class
 rip\orbit\hcteams\listener\KOTHRewardKeyListener.class
 rip\orbit\hcteams\team\commands\team\TeamJSONCommand.class
 rip\orbit\hcteams\team\commands\team\TeamSaveStringCommand.class
@@ -398,17 +416,16 @@ rip\orbit\hcteams\team\claims\Subclaim.class
 rip\orbit\hcteams\listener\TeamListener$2.class
 rip\orbit\hcteams\team\commands\team\TeamForceLeaveCommand.class
 rip\orbit\hcteams\server\RegionMoveHandler$1.class
-rip\orbit\hcteams\blockshop\menu\BlockShopMenu$GlassCategoryButton.class
 rip\orbit\hcteams\tab\TabListMode.class
 rip\orbit\hcteams\commands\ToggleDeathMessagesCommand.class
 rip\orbit\hcteams\util\object\Webhook.class
 rip\orbit\hcteams\events\region\carepackage\CarePackageHandler$1.class
 rip\orbit\hcteams\team\menu\DemoteMembersMenu.class
 rip\orbit\hcteams\redeem\command\RedeemCommand.class
+rip\orbit\hcteams\shops\blockshop\menu\button\StainedGlassButton.class
 rip\orbit\hcteams\persist\maps\LivesMap.class
 rip\orbit\hcteams\events\purge\PurgeHandler.class
 rip\orbit\hcteams\map\game\impl\ffa\FFAGame$1.class
-rip\orbit\hcteams\blockshop\command\BlockShopCommand.class
 rip\orbit\hcteams\team\commands\team\TeamListCommand$1.class
 rip\orbit\hcteams\map\game\impl\sumo\SumoGame$2.class
 rip\orbit\hcteams\events\events\EventDeactivatedEvent.class
@@ -454,8 +471,8 @@ rip\orbit\hcteams\team\commands\team\chatspy\TeamChatSpyClearCommand.class
 rip\orbit\hcteams\map\duel\Duel.class
 rip\orbit\hcteams\map\game\GameUtils.class
 rip\orbit\hcteams\map\game\menu\MapVoteMenu.class
+rip\orbit\hcteams\shops\blockshop\menu\ChristmasBlockMenu.class
 rip\orbit\hcteams\util\item\ItemUtils.class
-rip\orbit\hcteams\blockshop\menu\BlockShopMenu$DecorationCategoryButton.class
 rip\orbit\hcteams\commands\TellLocationCommand.class
 rip\orbit\hcteams\map\game\arena\GameArena$Type.class
 rip\orbit\hcteams\map\duel\command\DuelCommand.class
@@ -467,6 +484,7 @@ rip\orbit\hcteams\team\commands\team\TeamForceKickCommand.class
 rip\orbit\hcteams\team\menu\BaseMenu$1$4.class
 rip\orbit\hcteams\commands\ToggleDatabaseTeamLog.class
 rip\orbit\hcteams\util\DateUtil.class
+rip\orbit\hcteams\shops\blockshop\menu\type\button\StainedGlassPurchaseButton.class
 rip\orbit\hcteams\chatgames\ChatGameHandler.class
 rip\orbit\hcteams\events\citadel\commands\CitadelRespawnChestsCommand.class
 rip\orbit\hcteams\team\teamupgrades\menu\BardMenu$3.class
@@ -482,7 +500,6 @@ rip\orbit\hcteams\team\commands\team\TeamAnnouncementCommand.class
 rip\orbit\hcteams\team\menu\PromoteMembersMenu.class
 rip\orbit\hcteams\deathmessage\trackers\GeneralTracker$1.class
 rip\orbit\hcteams\persist\maps\OppleMap.class
-rip\orbit\hcteams\blockshop\menu\category\DecorationMenu$1.class
 rip\orbit\hcteams\team\teamupgrades\menu\BardMenu.class
 rip\orbit\hcteams\listener\kits\BountyListerner$RewardAction.class
 rip\orbit\hcteams\events\citadel\tasks\CitadelSaveTask.class
@@ -498,6 +515,7 @@ rip\orbit\hcteams\commands\ImGayCommand.class
 rip\orbit\hcteams\commands\staff\TeamManageCommand.class
 rip\orbit\hcteams\settings\commands\SettingsCommand.class
 rip\orbit\hcteams\persist\maps\FirstJoinMap.class
+rip\orbit\hcteams\shops\blockshop\menu\button\StainedClayButton.class
 rip\orbit\hcteams\team\teamupgrades\menu\MeteorMenu$2.class
 rip\orbit\hcteams\pvpclasses\pvpclasses\RogueClass.class
 rip\orbit\hcteams\commands\staff\SetWorldBorderCommand.class
@@ -519,11 +537,13 @@ rip\orbit\hcteams\map\game\listener\GameListeners.class
 rip\orbit\hcteams\ability\items\Curse.class
 rip\orbit\hcteams\team\commands\team\TeamDisplayCommand.class
 rip\orbit\hcteams\listener\SpawnListener$1.class
+rip\orbit\hcteams\shops\buyshop\menu\button\HCFBuyPurchaseButton.class
 rip\orbit\hcteams\team\commands\team\TeamUninviteCommand.class
 rip\orbit\hcteams\events\dtc\commands\DTCCreateCommand.class
 rip\orbit\hcteams\map\game\Game$1.class
 rip\orbit\hcteams\team\commands\team\TeamLeaveCommand.class
 rip\orbit\hcteams\commands\staff\SpawnCommand.class
+rip\orbit\hcteams\shops\blockshop\menu\button\NetherButton.class
 rip\orbit\hcteams\events\EventConfigFile.class
 rip\orbit\hcteams\listener\SpawnListener.class
 rip\orbit\hcteams\persist\maps\StarsMap.class
@@ -534,6 +554,7 @@ rip\orbit\hcteams\team\commands\team\subclaim\TeamSubclaimMapCommand.class
 rip\orbit\hcteams\map\game\impl\sumo\SumoGame.class
 rip\orbit\hcteams\team\commands\SetTeamBalanceCommand.class
 rip\orbit\hcteams\chat\listeners\ChatListener.class
+rip\orbit\hcteams\redeem\menu\RedeemMenu.class
 rip\orbit\hcteams\ability\items\Warrior.class
 rip\orbit\hcteams\team\commands\team\TeamTopCommand$1.class
 rip\orbit\hcteams\listener\CombatLoggerListener$2.class
@@ -552,6 +573,7 @@ rip\orbit\hcteams\listener\PvPTimerListener$1.class
 rip\orbit\hcteams\commands\staff\SetWorldBorderCommand$1.class
 rip\orbit\hcteams\scoreboard\FoxtrotScoreGetter.class
 rip\orbit\hcteams\pvpclasses\pvpclasses\MinerClass.class
+rip\orbit\hcteams\shops\blockshop\menu\type\NetherBlocks.class
 rip\orbit\hcteams\team\menu\button\OpenKickMenuButton.class
 rip\orbit\hcteams\events\koth\commands\koth\KOTHListCommand.class
 rip\orbit\hcteams\server\ServerHandler$2.class
@@ -559,7 +581,6 @@ rip\orbit\hcteams\commands\staff\CrowbarCommand.class
 rip\orbit\hcteams\map\kits\editor\button\FillHealPotionsButton.class
 rip\orbit\hcteams\map\kits\editor\menu\KitRenameButton.class
 rip\orbit\hcteams\commands\staff\KOTHRewardKeyCommand.class
-rip\orbit\hcteams\blockshop\BlockShopHandler.class
 rip\orbit\hcteams\map\deathban\DeathbanListener.class
 rip\orbit\hcteams\team\commands\team\TeamInvitesCommand.class
 rip\orbit\hcteams\map\killstreaks\orbittypes\Invis.class
@@ -584,10 +605,10 @@ rip\orbit\hcteams\commands\staff\TeamManageCommand$1.class
 rip\orbit\hcteams\util\menu\Menu.class
 rip\orbit\hcteams\pvpclasses\pvpclasses\ArcherClass$1.class
 rip\orbit\hcteams\commands\staff\ToggleEndCommand.class
-rip\orbit\hcteams\blockshop\menu\category\DecorationMenu.class
 rip\orbit\hcteams\persist\maps\PvPTimerMap$1.class
 rip\orbit\hcteams\server\event\BackstabKillEvent.class
 rip\orbit\hcteams\persist\maps\EmeraldMinedMap.class
+rip\orbit\hcteams\shops\blockshop\menu\BlockShopMenu.class
 rip\orbit\hcteams\team\commands\team\TeamResizeCommand$1.class
 rip\orbit\hcteams\team\menu\BaseMenu$2$5.class
 rip\orbit\hcteams\redeem\command\param\PartnerParamType.class
@@ -597,7 +618,6 @@ rip\orbit\hcteams\map\game\GameType$Type.class
 rip\orbit\hcteams\map\duel\command\AcceptCommand.class
 rip\orbit\hcteams\map\game\command\JoinCommand.class
 rip\orbit\hcteams\team\commands\team\TeamListCommand.class
-rip\orbit\hcteams\blockshop\menu\BlockShopMenu$WoolCategoryButton.class
 rip\orbit\hcteams\map\stats\command\StatsTopCommand$StatsObjective.class
 rip\orbit\hcteams\commands\lff\LFFCommand.class
 rip\orbit\hcteams\util\CuboidRegion$CuboidIterator.class
@@ -607,6 +627,7 @@ rip\orbit\hcteams\events\killtheking\command\KingEventCommands.class
 rip\orbit\hcteams\events\patch\command\PatchCommand.class
 rip\orbit\hcteams\stars\listener\StarMineListener.class
 rip\orbit\hcteams\team\teamupgrades\menu\DTRRegenMenu$2.class
+rip\orbit\hcteams\shops\blockshop\menu\NetherBlockMenu.class
 rip\orbit\hcteams\commands\ToggleClaimsCommand.class
 rip\orbit\hcteams\map\stats\command\LeaderboardAddCommand$1.class
 rip\orbit\hcteams\team\commands\team\TeamShopCommand.class
@@ -621,8 +642,10 @@ rip\orbit\hcteams\team\claims\Claim.class
 rip\orbit\hcteams\events\citadel\commands\CitadelSaveLoottableCommand.class
 rip\orbit\hcteams\team\TeamType.class
 rip\orbit\hcteams\team\claims\VisualClaim$3.class
+rip\orbit\hcteams\shops\blockshop\menu\button\RedstoneButton.class
 rip\orbit\hcteams\commands\LogoutCommand.class
 rip\orbit\hcteams\commands\staff\FFACommand$1.class
+rip\orbit\hcteams\shops\blockshop\menu\StainedClayMenu.class
 rip\orbit\hcteams\deathmessage\objects\Damage.class
 rip\orbit\hcteams\util\item\InventoryUtils.class
 rip\orbit\hcteams\events\dtc\DTC.class
@@ -648,6 +671,7 @@ rip\orbit\hcteams\events\citadel\commands\CitadelSaveCommand.class
 rip\orbit\hcteams\events\koth\commands\koth\KOTHTPCommand.class
 rip\orbit\hcteams\team\teamupgrades\menu\DTRRegenMenu$3.class
 rip\orbit\hcteams\map\game\Game.class
+rip\orbit\hcteams\shops\sellshop\command\SellShopCommand.class
 rip\orbit\hcteams\listener\fixes\BasicPreventionListener$1.class
 rip\orbit\hcteams\persist\PersistMap$3.class
 rip\orbit\hcteams\team\menu\button\MuteButton.class
@@ -698,7 +722,6 @@ rip\orbit\hcteams\listener\fixes\BasicPreventionListener.class
 rip\orbit\hcteams\settings\menu\button\SettingButton$1.class
 rip\orbit\hcteams\map\killstreaks\orbittypes\Strength.class
 rip\orbit\hcteams\commands\staff\ShowStaffCommand.class
-rip\orbit\hcteams\blockshop\menu\category\CategoryMenu$CategoryButton.class
 rip\orbit\hcteams\deathmessage\util\UnknownDamage.class
 rip\orbit\hcteams\redeem\object\Partner.class
 rip\orbit\hcteams\commands\staff\CSVExportCommand.class
@@ -712,7 +735,6 @@ rip\orbit\hcteams\team\teamupgrades\button\TokenUpgradesButton.class
 rip\orbit\hcteams\events\citadel\file\CitadelConfigFile.class
 rip\orbit\hcteams\map\game\command\LeaveCommand.class
 rip\orbit\hcteams\util\object\Webhook$1.class
-rip\orbit\hcteams\blockshop\type\DecorationType.class
 rip\orbit\hcteams\commands\CobbleCommand.class
 rip\orbit\hcteams\events\koth\commands\koth\KOTHViewCapperCommand.class
 rip\orbit\hcteams\team\menu\BaseMenu$2$2.class
@@ -735,6 +757,7 @@ rip\orbit\hcteams\server\ServerHandler$5.class
 rip\orbit\hcteams\team\commands\team\TeamOpClaimCommand.class
 rip\orbit\hcteams\events\citadel\events\CitadelCapturedEvent.class
 rip\orbit\hcteams\util\ReflectUtil.class
+rip\orbit\hcteams\shops\sellshop\SellShopBlocks.class
 rip\orbit\hcteams\server\SpawnTagHandler.class
 rip\orbit\hcteams\util\CC.class
 rip\orbit\hcteams\team\event\PlayerBuildInOthersClaimEvent.class
@@ -767,10 +790,10 @@ rip\orbit\hcteams\events\conquest\game\ConquestGame$1.class
 rip\orbit\hcteams\util\object\PortalDirection.class
 rip\orbit\hcteams\server\ServerHandler$3.class
 rip\orbit\hcteams\server\RegionType.class
+rip\orbit\hcteams\shops\blockshop\menu\button\BuildingButton.class
 rip\orbit\hcteams\server\ServerHandler$PotionStatus.class
 rip\orbit\hcteams\util\item\ItemBuilder.class
 rip\orbit\hcteams\reclaim\command\ReclaimCommand.class
-rip\orbit\hcteams\blockshop\menu\BlockShopMenu.class
 rip\orbit\hcteams\ability\Ability.class
 rip\orbit\hcteams\events\patch\PatchHandler.class
 rip\orbit\hcteams\map\killstreaks\orbittypes\Speed2.class
@@ -856,6 +879,7 @@ rip\orbit\hcteams\settings\Setting$9.class
 rip\orbit\hcteams\commands\staff\SpawnerCommand.class
 rip\orbit\hcteams\map\game\command\HostCommand.class
 rip\orbit\hcteams\commands\PlaytimeCommand.class
+rip\orbit\hcteams\shops\blockshop\menu\BuildingBlockMenu.class
 rip\orbit\hcteams\util\object\Formats$1.class
 rip\orbit\hcteams\deathmessage\trackers\PVPTracker.class
 rip\orbit\hcteams\events\koth\commands\kothschedule\KOTHReloadSchedule.class
@@ -911,6 +935,7 @@ rip\orbit\hcteams\listener\KOTHRewardKeyListener$1.class
 rip\orbit\hcteams\util\object\Webhook$EmbedObject$Author.class
 rip\orbit\hcteams\util\menu\Menu$1.class
 rip\orbit\hcteams\reclaim\config\ReclaimConfigFile.class
+rip\orbit\hcteams\shops\sellshop\menu\button\SellPurchaseButton.class
 rip\orbit\hcteams\team\commands\team\subclaim\TeamSubclaimUnclaimCommand.class
 rip\orbit\hcteams\map\kits\command\KitIconCommand.class
 rip\orbit\hcteams\util\object\Webhook$EmbedObject$Footer.class

@@ -25,12 +25,12 @@ public class TeamCommand {
                 "§f/t leave §7- Leave your current team",
                 "§f/t home §7- Teleport to your team home",
                 "§f/t stuck §7- Teleport out of enemy territory",
-                "§f/t deposit <amount§7|§eall> §7- Deposit money into your team balance",
+                "§f/t deposit <amount§7|§fall> §7- Deposit money into your team balance",
 
 
                 "",
                 "§6Information Commands:",
-                "§f/t who [player§7|§eteamName] §7- Display team information",
+                "§f/t who [player§7|§fteamName] §7- Display team information",
                 "§f/t map §7- Show nearby claims (identified by pillars)",
                 "§f/t list §7- Show list of teams online (sorted by most online)",
 

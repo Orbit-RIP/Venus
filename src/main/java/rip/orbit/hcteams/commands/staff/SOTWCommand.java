@@ -64,7 +64,7 @@ public class SOTWCommand {
             return;
         }
 
-        customTimers.put("&f&lSOTW ends in", System.currentTimeMillis() + (seconds * 1000));
+        customTimers.put("&a&lSOTW ends in", System.currentTimeMillis() + (seconds * 1000));
         sender.sendMessage(ChatColor.GREEN + "Started the SOTW timer for " + time);
     }
 
@@ -83,12 +83,12 @@ public class SOTWCommand {
             return;
         }
 
-        if (!customTimers.containsKey("&f&lSOTW ends in")) {
+        if (!customTimers.containsKey("&a&lSOTW ends in")) {
             sender.sendMessage(ChatColor.RED + "There is currently no active SOTW timer.");
             return;
         }
 
-        customTimers.put("&f&lSOTW ends in", customTimers.get("&f&lSOTW ends in") + (seconds * 1000));
+        customTimers.put("&a&lSOTW ends in", customTimers.get("&a&lSOTW ends in") + (seconds * 1000));
         sender.sendMessage(ChatColor.GREEN + "Extended the SOTW timer by " + time);
     }
 

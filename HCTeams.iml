@@ -33,15 +33,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.citizensnpcs:citizens-main:2.0.20-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.citizensnpcs:citizens-v1_10_R1:2.0.20-SNAPSHOT" level="project" />
     <orderEntry type="module-library">
-      <library name="Maven: rip.orbit:HolographicDisplay:1.7.10-RE">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/HolographicDisplays.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="Maven: rip.orbit:Crates:2.2.7">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/libs/oCrates-1.0.jar!/" />

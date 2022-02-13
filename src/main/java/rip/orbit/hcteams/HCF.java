@@ -9,8 +9,9 @@ import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import lombok.Getter;
 import lombok.Setter;
-import net.minecraft.util.org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -189,10 +190,10 @@ public class HCF extends JavaPlugin {
 				if (players.isEmpty()) {
 					players.add("None");
 				}
-				String formattedPlayers = StringUtils.join(players, ", ");
-				Bukkit.broadcastMessage(CC.chat("&6&lOnline Orbit Donators"));
-				Bukkit.broadcastMessage(CC.chat(" &7» &f" + formattedPlayers));
-				Bukkit.broadcastMessage(CC.chat("&7&oPurchase &6Orbit&7&o Rank @ store.orbit.rip"));
+				getServer().broadcastMessage(ChatColor.GRAY + "");
+				getServer().broadcastMessage(CC.translate("&6Online Orbit Users &8» &f" + StringUtils.join(players, ", ")));
+				getServer().broadcastMessage(CC.translate("&7You can purchase the Orbit rank at &7&ostore.orbit.rip"));
+				getServer().broadcastMessage(ChatColor.GRAY + "");
 			}
 		}.runTaskTimer(this, 200L, 18000L);
 

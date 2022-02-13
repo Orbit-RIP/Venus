@@ -34,10 +34,10 @@ public class GeneratorMenu extends Menu {
 	public Map<Integer, Button> getButtons(Player player) {
 		Map<Integer, Button> buttons = new HashMap<>();
 
-		buttons.put(12, new SummaryButton(this.generator));
+		buttons.put(12, new ToggleHologramButton(this.generator));
+		buttons.put(13, new SummaryButton(this.generator));
 		buttons.put(14, new UpgradeButton(this.generator));
-		buttons.put(19, new ToggleHologramButton(this.generator));
-		buttons.put(25, new PickUpButton(this.generator));
+		buttons.put(15, new PickUpButton(this.generator));
 
 		return buttons;
 	}

@@ -41,12 +41,12 @@ public class GhostMode extends Ability {
 
 	@Override
 	public String name() {
-		return "ghostmode";
+		return "invisibility";
 	}
 
 	@Override
 	public String displayName() {
-		return CC.chat("&8&lGhost Mode");
+		return CC.chat("&c&lInvisibility II");
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class GhostMode extends Ability {
 
 			List<String> hitMsg = Arrays.asList(
 					"",
-					"&8You" + " &fhave just used a " + displayName(),
+					"&cYou &fhave just used a " + displayName(),
 					" ",
 					"&6&l┃ &fYou have &82 minutes&f of &8full invisibility&f.",
 					"&6&l┃ &fIf you're hit whilst this is activated, you will",

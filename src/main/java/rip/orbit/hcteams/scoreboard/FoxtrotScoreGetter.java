@@ -6,10 +6,8 @@ import cc.fyre.proton.scoreboard.construct.ScoreGetter;
 import cc.fyre.proton.util.TimeUtils;
 import cc.fyre.proton.util.UUIDUtils;
 import net.minecraft.util.org.apache.commons.lang3.time.DurationFormatUtils;
-import org.bson.types.ObjectId;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import rip.orbit.hcteams.HCF;
 import rip.orbit.hcteams.ability.Ability;
@@ -37,17 +35,15 @@ import rip.orbit.hcteams.server.ServerHandler;
 import rip.orbit.hcteams.server.SpawnTagHandler;
 import rip.orbit.hcteams.settings.Setting;
 import rip.orbit.hcteams.team.Team;
-import rip.orbit.hcteams.team.claims.LandBoard;
 import rip.orbit.hcteams.team.commands.team.TeamStuckCommand;
 import rip.orbit.hcteams.team.dtr.DTRBitmask;
 import rip.orbit.hcteams.util.CC;
 import rip.orbit.hcteams.util.Logout;
 
 import java.text.DecimalFormat;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class FoxtrotScoreGetter implements ScoreGetter {
 
@@ -55,8 +51,7 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 		return "" + Math.min(Math.round(tps * 10.0) / 10.0, 20.0);
 	}
 
-	@Override
-	public String[] getScores(LinkedList<String> scores, Player player) {
+	public void getScores(LinkedList<String> scores, Player player) {
 		Team team = HCF.getInstance().getTeamHandler().getTeam(player);
 
 		if (HCF.getInstance().getMapHandler().getGameHandler() != null && HCF.getInstance().getMapHandler().getGameHandler().isOngoingGame()) {
@@ -65,7 +60,7 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 				ongoingGame.getScoreboardLines(player, scores);
 				scores.addFirst("&a&7&m--------------------");
 				scores.add("&b&7&m--------------------");
-				return scores.toArray(new String[0]);
+				return;
 			}
 		}
 
@@ -73,11 +68,9 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 			Duel duel = HCF.getInstance().getMapHandler().getDuelHandler().getDuel(player);
 
 			scores.add("&6&l┃ &fOpponent&7: &6" + UUIDUtils.name(duel.getOpponent(player.getUniqueId())));
-
 			scores.addFirst("&a&7&m--------------------");
 			scores.add("&b&7&m--------------------");
-
-			return scores.toArray(new String[0]);
+			return;
 		}
 
 
@@ -108,41 +101,41 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 		if (HCF.getInstance().getMapHandler().isKitMap()) {
 			StatsEntry stats = HCF.getInstance().getMapHandler().getStatsHandler().getStats(player.getUniqueId());
 			if (!DTRBitmask.SAFE_ZONE.appliesAt(player.getLocation())) {
-				scores.add(otherColor + "&6&l┃ &fKills&7: &6" + stats.getKills());
-				scores.add(otherColor + "&6&l┃ &fDeaths&7: &6" + stats.getDeaths());
+				scores.add(otherColor + "&6&l┃ &6Kills&7: &f" + stats.getKills());
+				scores.add(otherColor + "&6&l┃ &6Deaths&7: &f" + stats.getDeaths());
 				if (stats.getKillstreak() > 0) {
-					scores.add(otherColor + "&6&l┃ &fKillstreak&7: &6" + stats.getKillstreak());
+					scores.add(otherColor + "&6&l┃ &6Killstreak&7: &f" + stats.getKillstreak());
 				}
-				scores.add(otherColor + "&6&l┃ &fBalance&7: &6" + "$" + Proton.getInstance().getEconomyHandler().getBalance(player.getUniqueId()));
+				scores.add(otherColor + "&6&l┃ &6Balance&7: &2&l" + "$&a" + Proton.getInstance().getEconomyHandler().getBalance(player.getUniqueId()));
 			}
 		}
 
 		if (spawnTagScore != null) {
-			scores.add("&6&l┃ &fSpawn Tag&7: &6" + spawnTagScore);
+			scores.add("&c&lSpawn Tag&7: &c" + spawnTagScore);
 		}
 
 		if (homeScore != null) {
-			scores.add("&6&l┃ &fHome§7: &6" + homeScore);
+			scores.add("&9&lHome§7: &c" + homeScore);
 		}
 
 		if (appleScore != null) {
-			scores.add("&6&l┃ &fApple&7: &6" + appleScore);
+			scores.add("&6Apple&7: &c" + appleScore);
 		}
 		long cooldown = HCF.getInstance().getOppleMap().getCooldown(player.getUniqueId());
 		if (cooldown > System.currentTimeMillis()) {
 			long millisLeft = cooldown - System.currentTimeMillis();
 			String msg = TimeUtils.formatLongIntoHHMMSS(TimeUnit.MILLISECONDS.toSeconds(millisLeft));
-			scores.add("&6&l┃ &fGopple&7: **&6" + msg);
+			scores.add("&6&lGopple&7: **&c" + msg);
 		}
 		if (enderpearlScore != null) {
-			scores.add("&6&l┃ &fEnderpearl&7: &6" + enderpearlScore);
+			scores.add("&5&lEnderpearl&7: &c" + enderpearlScore);
 		}
 
 
 		if (KingEvent.isStarted(false)) {
 			Player target = KingEvent.getFocusedPlayer();
 			scores.add(mainColor + "&lKill The King");
-			scores.add("&7┃" + otherColor + " King: " + target.getName());
+			scores.add("&7┃" + otherColor + " King: " + target.getDisplayName());
 			if (target != player) {
 				scores.add("&7┃" + otherColor + " Location: &f" + target.getLocation().getBlockX() + ", " + target.getLocation().getBlockX() + ", " + target.getLocation().getBlockZ());
 				if (target.getWorld() == player.getWorld()) {
@@ -152,15 +145,15 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 					}
 				}
 			}
-			scores.add(otherColor + "&6&l┃ &fReward: &6" + KingEvent.getReward());
-			scores.add(otherColor + "&6&l┃ &fTime Left: &6" + DurationFormatUtils.formatDuration(KingEvent.getTime(), "mm:ss"));
+			scores.add(otherColor + "&6&l┃ &6Reward: &f" + KingEvent.getReward());
+			scores.add(otherColor + "&6&l┃ &6Time Left: &f" + DurationFormatUtils.formatDuration(KingEvent.getTime(), "mm:ss"));
 		}
 
 		if (pvpTimerScore != null) {
 			if (HCF.getInstance().getStartingPvPTimerMap().get(player.getUniqueId())) {
-				scores.add("&6&l┃ &fStarting Timer&7: &6" + pvpTimerScore);
+				scores.add("&a&lStarting Timer&7: &c" + pvpTimerScore);
 			} else {
-				scores.add("&6&l┃ &fPvP Timer&7: &6" + pvpTimerScore);
+				scores.add("&a&LPvP Timer&7: &c" + pvpTimerScore);
 			}
 		}
 
@@ -172,11 +165,11 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 				continue;
 			}
 
-			if (timer.getKey().equals("&f&lSOTW ends in")) {
+			if (timer.getKey().equals("&a&lSOTW ends in")) {
 				if (SOTWCommand.hasSOTWEnabled(player.getUniqueId())) {
-					scores.add(ChatColor.translateAlternateColorCodes('&', "&6&l┃ &f&mSOTW ends in&6&m " + getTimerScore(timer)));
+					scores.add(ChatColor.translateAlternateColorCodes('&', "&a&l&mSOTW ends in&c&m " + getTimerScore(timer)));
 				} else {
-					scores.add(ChatColor.translateAlternateColorCodes('&', "&6&l┃ &fSOTW ends in&6 " + getTimerScore(timer)));
+					scores.add(ChatColor.translateAlternateColorCodes('&', "&a&lSOTW ends in&c " + getTimerScore(timer)));
 				}
 			}
 		}
@@ -184,7 +177,7 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 		for (CustomTimer timer : CustomTimer.customTimers) {
 			long time = timer.getTime();
 			if (getTimerScore(time) != null) {
-				scores.add("&6&l┃ &f" + timer.getName() + "&7: &6" + getTimerScore(time));
+				scores.add(timer.getName() + "&7: &c" + getTimerScore(time));
 			} else {
 				CustomTimer.customTimers.remove(timer);
 				Bukkit.dispatchCommand(Bukkit.getConsoleSender(), timer.getCommand());
@@ -192,7 +185,7 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 		}
 
 		if (PurgeCommands.isPurgeTimer()) {
-			scores.add(ChatColor.translateAlternateColorCodes('&', "&6&l┃ &fPurge Event&7: &6" + PurgeCommands.getCustomTimers()));
+			scores.add(ChatColor.translateAlternateColorCodes('&', "&c&lPurge Event&7: &c" + PurgeCommands.getCustomTimers()));
 		}
 
 		for (Event event : HCF.getInstance().getEventHandler().getEvents()) {
@@ -203,16 +196,10 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 
 			switch (event.getName()) {
 				case "EOTW":
-					displayName = ChatColor.WHITE.toString() + "EOTW";
+					displayName = ChatColor.DARK_RED.toString() + ChatColor.BOLD + "EOTW";
 					break;
 				case "Citadel":
-					displayName = ChatColor.WHITE.toString() + "Citadel";
-					break;
-				case "End":
-					displayName = ChatColor.WHITE.toString() + "End";
-					break;
-				case "Nether":
-					displayName = ChatColor.WHITE.toString() + "Nether";
+					displayName = ChatColor.DARK_PURPLE.toString() + ChatColor.BOLD + "Citadel";
 					break;
 				default:
 					displayName = ChatColor.WHITE.toString() + event.getName();
@@ -230,60 +217,60 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 			long ffaEnabledAt = EOTWCommand.getFfaActiveAt();
 			if (System.currentTimeMillis() < ffaEnabledAt) {
 				long difference = ffaEnabledAt - System.currentTimeMillis();
-				scores.add("&6&l┃ &fFFA&7: &6" + ScoreFunction.TIME_SIMPLE.apply(difference / 1000F));
+				scores.add("&c&lFFA&7: &c" + ScoreFunction.TIME_SIMPLE.apply(difference / 1000F));
 			}
 		}
 		PvPClass classs = PvPClassHandler.getPvPClass(player);
 		if (classs != null) {
-			scores.add("&6&l┃ &fActive Class&7: &6" + classs.getName());
+			scores.add("&a&lActive Class&7: &f" + classs.getName());
 		}
 
 		if (archerMarkScore != null) {
-			scores.add("&6&l┃ &fArcher Mark&7: &6" + archerMarkScore);
+			scores.add("&c&LArcher Mark&7: &f" + archerMarkScore);
 		}
 
 		if (bardEffectScore != null && classs != null) {
-			scores.add("&6&l┃ &fBard Effect&7: &6" + bardEffectScore);
+			scores.add("&6&lBard Effect&7: &f" + bardEffectScore);
 		}
 
 		if (bardEnergyScore != null && classs != null) {
-			scores.add("&6&l┃ &fBard Energy&7: &6" + bardEnergyScore);
+			scores.add("&a&LBard Energy&7: &f" + bardEnergyScore);
 		}
 		if (ArcherClass.getLastSpeedUsage().containsKey(player.getName()) && ArcherClass.getLastSpeedUsage().get(player.getName()) > System.currentTimeMillis() && classs != null) {
 			long millisLeft = ArcherClass.getLastSpeedUsage().get(player.getName()) - System.currentTimeMillis();
 			String msg = TimeUtils.formatIntoMMSS((int) millisLeft / 1000);
-			scores.add("&6&l┃ &fSpeed&7: &6" + msg);
+			scores.add("&6&l┃ &fSpeed&7: &c" + msg);
 		}
 		if (ArcherClass.getLastJumpUsage().containsKey(player.getName()) && ArcherClass.getLastJumpUsage().get(player.getName()) > System.currentTimeMillis() && classs != null) {
 			long millisLeft = ArcherClass.getLastJumpUsage().get(player.getName()) - System.currentTimeMillis();
 			String msg = TimeUtils.formatIntoMMSS((int) millisLeft / 1000);
-			scores.add("&6&l┃ &fJump Boost&7: &6" + msg);
+			scores.add("&6&l┃ &fJump Boost&7: &c" + msg);
 		}
 
 		if (fstuckScore != null) {
-			scores.add("&6&l┃ &fStuck&7: &6" + fstuckScore);
+			scores.add("&4&lStuck&7: &c" + fstuckScore);
 		}
 
 		if (logoutScore != null) {
-			scores.add("&6&l┃ &fLogout&7: &6" + logoutScore);
+			scores.add("&c&lLogout&7: &c" + logoutScore);
 		}
 
 		if (HCF.getInstance().getAbilityHandler().getAbilityCD().onCooldown(player)) {
-			scores.add("&6&l┃ &fAbility Item&7: &6" + HCF.getInstance().getAbilityHandler().getAbilityCD().getRemaining(player));
+			scores.add("&a&lAbility Item&7: &f" + HCF.getInstance().getAbilityHandler().getAbilityCD().getRemaining(player));
 		}
 
 		GameHandler gameHandler = HCF.getInstance().getMapHandler().getGameHandler();
 		if (gameHandler != null) {
 			if (gameHandler.isJoinable())
-				scores.add("&6&l┃ &fEvent&7: &6" + HCF.getInstance().getMapHandler().getGameHandler().getOngoingGame().getGameType().getDisplayName() + " (/join)");
+				scores.add("&6&lEvent&7: &f" + HCF.getInstance().getMapHandler().getGameHandler().getOngoingGame().getGameType().getDisplayName() + " (/join)");
 			else if (gameHandler.isHostCooldown())
-				scores.add("&6&l┃ &fEvent Cooldown&7: &6" + gameHandler.getCooldownSeconds() + "s");
+				scores.add("&5&lEvent Cooldown&7: &c" + gameHandler.getCooldownSeconds() + "s");
 		}
 
 		if (HCF.getInstance().getToggleAbilityCDsSBMap().isEnabled(player.getUniqueId())) {
 			for (Ability ability : HCF.getInstance().getAbilityHandler().getAbilities()) {
 				if (ability.cooldown().onCooldown(player)) {
-					scores.add("&6&l┃ &f" + ChatColor.stripColor(ability.displayName()) + "&7: &6" + ability.cooldown().getRemaining(player));
+					scores.add("&6&l┃ &6" + ChatColor.stripColor(ability.displayName()) + "&7: &f" + ability.cooldown().getRemaining(player));
 				}
 			}
 		}
@@ -295,64 +282,33 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 			if (scores.size() != 0) {
 				scores.add("&c&7&m--------------------");
 			}
+			KOTH red = (KOTH) HCF.getInstance().getEventHandler().getEvent("Conquest-RED");
+			KOTH yellow = (KOTH) HCF.getInstance().getEventHandler().getEvent("Conquest-YELLOW");
+			KOTH blue = (KOTH) HCF.getInstance().getEventHandler().getEvent("Conquest-BLUE");
+			KOTH green = (KOTH) HCF.getInstance().getEventHandler().getEvent("Conquest-GREEN");
 
-			scores.add(mainColor + "Conquest");
-			int displayed = 0;
-
-			for (Map.Entry<ObjectId, Integer> entry : conquest.getTeamPoints().entrySet()) {
-				Team resolved = HCF.getInstance().getTeamHandler().getTeam(entry.getKey());
-
-				if (resolved != null) {
-					scores.add("&6&l┃ " + resolved.getName(player) + "&7: &6" + entry.getValue());
-					displayed++;
+			scores.add("&6&lConquest:");
+			scores.add((ChatColor.GREEN + " \u2588 " + ChatColor.GRAY + "(" + green.getRemainingCapTime() + ChatColor.GRAY + "s) " + (green.getRemainingCapTime() < 10 ? "  " : "") + ChatColor.YELLOW + "\u2588 " + ChatColor.GRAY + "(" + yellow.getRemainingCapTime() + ChatColor.GRAY + "s)"));
+			scores.add((ChatColor.BLUE + " \u2588 " + ChatColor.GRAY + "(" + blue.getRemainingCapTime() + ChatColor.GRAY + "s) " + (blue.getRemainingCapTime() < 10 ? "  " : "") + ChatColor.RED + "\u2588 " + ChatColor.GRAY + "(" + red.getRemainingCapTime() + ChatColor.GRAY + "s)"));
+			AtomicInteger displayed = new AtomicInteger();
+			conquest.getTeamPoints().forEach((key, value) -> {
+				Team resolved = HCF.getInstance().getTeamHandler().getTeam(key);
+				if (displayed.get() != 3) {
+					if (resolved != null) {
+						scores.add((" " + resolved.getName(player) + "&7 (" + value) + " Point" + (value == 1 ? "" : "s") + ")");
+						displayed.getAndIncrement();
+					}
 				}
-
-				if (displayed == 3) {
-					break;
-				}
-			}
-
-			if (displayed == 0) {
-				scores.add("&7No scores yet");
-			}
+			});
 		}
 
 		if (Proton.getInstance().getAutoRebootHandler().isRebooting()) {
-			scores.add("&6&l┃ &fRebooting&7: &6" + TimeUtils.formatIntoMMSS(Proton.getInstance().getAutoRebootHandler().getRebootSecondsRemaining()));
+			scores.add("&4&lRebooting&7: &c" + TimeUtils.formatIntoMMSS(Proton.getInstance().getAutoRebootHandler().getRebootSecondsRemaining()));
 		}
 		if (HCF.getInstance().getClaimOnSbMap().isToggled(player.getUniqueId())) {
 			if (team != null) {
 				if (team.getFactionFocused() != null || conquest != null) {
 					scores.add(" ");
-				}
-			}
-			Location loc = player.getLocation();
-			Team ownerTeam = LandBoard.getInstance().getTeam(loc);
-			String location;
-			if (ownerTeam != null) {
-				if (ownerTeam.getName().equals("AbilityHill") && ownerTeam.getMembers().size() == 0) {
-					location = ChatColor.YELLOW + "Ability Hill";
-				} else if (ownerTeam.getName().equals("PumpkinPatch") && ownerTeam.getMembers().size() == 0) {
-					location = ChatColor.GOLD + "Pumpkin Patch";
-				} else {
-					location = ownerTeam.getName(player);
-				}
-			} else if (!HCF.getInstance().getServerHandler().isWarzone(loc)) {
-				location = ChatColor.GRAY + "Wilderness";
-			} else if (LandBoard.getInstance().getTeam(loc) != null && LandBoard.getInstance().getTeam(loc).getName().equalsIgnoreCase("citadel")) {
-				location = ChatColor.DARK_PURPLE + "Citadel";
-			} else {
-				location = ChatColor.DARK_RED + "Warzone";
-			}
-			if (!HCF.getInstance().getServerHandler().isUnclaimed(loc)) {
-				if (player.hasMetadata("modmode")) {
-					scores.add(" ");
-				}
-				scores.add("&6&l┃ &fClaim&7: " + location);
-				if (team != null) {
-					if (team.getFactionFocused() != null || conquest != null) {
-						scores.add(" ");
-					}
 				}
 			}
 		}
@@ -373,23 +329,25 @@ public class FoxtrotScoreGetter implements ScoreGetter {
 				}
 
 				if (focusedFaction.getHq() != null) {
-					scores.add(mainColor + "&6&l┃ &fHQ&7: &6" + focusedFaction.getHq().getBlockX() + ", " + focusedFaction.getHq().getBlockZ());
+					scores.add(mainColor + "&6&l┃ &6HQ&7: &f" + focusedFaction.getHq().getBlockX() + ", " + focusedFaction.getHq().getBlockZ());
 				} else {
-					scores.add(mainColor + "&6&l┃ &fHQ&7: &cNot set.");
+					scores.add(mainColor + "&6&l┃ &6HQ&7: &cNot set.");
 				}
-				scores.add(mainColor + "&6&l┃ &fDTR&7: &r" + dtrColored + focusedFaction.getDTRSuffix());
+				scores.add(mainColor + "&6&l┃ &6DTR&7: &r" + dtrColored + focusedFaction.getDTRSuffix());
 			}
 		}
 		if (!scores.isEmpty()) {
 			scores.addFirst("&a&7&m--------------------");
 			if (HCF.getInstance().getConfig().getBoolean("scoreboard.footerboolean")) {
 				scores.add("&c&l");
-				scores.add(CC.translate("&6&oorbit.rip"));
+				scores.add(CC.translate("&7&ostore.orbit.rip"));
 			}
-			scores.add("&b&7&m--------------------");
+			scores.add("&e&7&m--------------------");
 		}
 
-		return scores.toArray(new String[0]);
+		while (scores.size() > 15) {
+			scores.remove(scores.size() - 1);
+		}
 
 	}
 

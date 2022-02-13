@@ -57,7 +57,7 @@ public class ChatListener implements Listener {
         Team playerTeam = HCF.getInstance().getTeamHandler().getTeam(event.getPlayer());
 
         Profile profile = Nebula.getInstance().getProfileHandler().fromUuid(event.getPlayer().getUniqueId());
-        String rankPrefix = profile.getActiveRank().getPrefix() + profile.getActiveRank().getColor() + event.getPlayer().getName();
+        String rankPrefix = profile.getActiveRank().getPrefix() + profile.getFancyName();
 
         String customPrefix = (profile.getActivePrefix() == null ? "" : profile.getActivePrefix().getDisplay()) + " " + getCustomPrefix(event.getPlayer().getUniqueId());
         ChatMode playerChatMode = HCF.getInstance().getChatModeMap().getChatMode(event.getPlayer().getUniqueId());
@@ -114,9 +114,9 @@ public class ChatListener implements Listener {
                         }
                     } else {
                         if (playerTeam.isMember(player.getUniqueId())) {
-                            player.sendMessage(finalMessage.replace(ChatColor.GOLD + "[" + HCF.getInstance().getServerHandler().getDefaultRelationColor(), ChatColor.GOLD + "[" + ChatColor.DARK_GREEN));
+                            player.sendMessage(finalMessage.replace(ChatColor.DARK_GRAY + "[" + HCF.getInstance().getServerHandler().getDefaultRelationColor(), ChatColor.DARK_GRAY + "[" + ChatColor.DARK_GREEN));
                         } else if (playerTeam.isAlly(player.getUniqueId())) {
-                            player.sendMessage(finalMessage.replace(ChatColor.GOLD + "[" + HCF.getInstance().getServerHandler().getDefaultRelationColor(), ChatColor.GOLD + "[" + Team.ALLY_COLOR));
+                            player.sendMessage(finalMessage.replace(ChatColor.DARK_GRAY + "[" + HCF.getInstance().getServerHandler().getDefaultRelationColor(), ChatColor.DARK_GRAY + "[" + Team.ALLY_COLOR));
                         } else {
                             if (TeamShadowMuteCommand.getTeamShadowMutes().containsKey(event.getPlayer().getUniqueId())) {
                                 continue;

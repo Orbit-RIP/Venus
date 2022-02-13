@@ -23,7 +23,7 @@ public class CustomTimerMenu extends Menu {
 
 	@Override
 	public String getTitle(Player player) {
-		return "CustomTimer List";
+		return "Custom Timer List";
 	}
 
 	@Override
@@ -46,10 +46,10 @@ public class CustomTimerMenu extends Menu {
 				@Override
 				public List<String> getDescription(Player player) {
 					return CC.translate(Arrays.asList(
-							"&fCommand: &6" + customTimer.getCommand(),
-							"&fTime: &6" + FoxtrotScoreGetter.getTimerScore(customTimer.getTime()),
+							"&6Command: &f" + customTimer.getCommand(),
+							"&6Time: &f" + FoxtrotScoreGetter.getTimerScore(customTimer.getTime()),
 							" ",
-							"&7&oClick to end this customtimer"
+							"&7&oClick to end this custom timer"
 					));
 				}
 

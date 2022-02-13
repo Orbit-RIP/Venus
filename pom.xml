@@ -69,13 +69,6 @@
 		</dependency>
 		<dependency>
 			<groupId>rip.orbit</groupId>
-			<artifactId>HolographicDisplay</artifactId>
-			<version>1.7.10-RE</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/libs/HolographicDisplays.jar</systemPath>
-		</dependency>
-		<dependency>
-			<groupId>rip.orbit</groupId>
 			<artifactId>Crates</artifactId>
 			<version>2.2.7</version>
 			<scope>system</scope>

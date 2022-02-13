@@ -2,7 +2,6 @@ package rip.orbit.hcteams.commands;
 
 import cc.fyre.proton.Proton;
 import cc.fyre.proton.command.Command;
-import cc.fyre.proton.command.param.Parameter;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 

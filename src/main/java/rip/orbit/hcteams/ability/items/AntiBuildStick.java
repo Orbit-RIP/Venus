@@ -62,7 +62,7 @@ public class AntiBuildStick extends Ability {
 
 	@Override
 	public String displayName() {
-		return CC.chat("&6&lAntiBuildStick");
+		return CC.chat("&6&lAnti Build Stick");
 	}
 
 	@Override
@@ -130,10 +130,8 @@ public class AntiBuildStick extends Ability {
 
 			List<String> beenHitMsg = Arrays.asList(
 					"",
-					"&6&lYOU HAVE BEEN HIT!",
-					" ",
 					"&6" + damager.getName() + " &fhas just hit you with",
-					"&fan &6AntiBuildStick&f.",
+					"&fan &6Anti Build Stick&f.",
 					" ",
 					"&6&l┃ &fYou cannot use/interact with the following",
 					"&6&l┃ &ffor &615 seconds&f.",
@@ -141,11 +139,9 @@ public class AntiBuildStick extends Ability {
 					"");
 
 			List<String> hitMsg = Arrays.asList(
-					"",
-					"&6&lYOU HAVE HIT SOMEONE!",
 					" ",
-					"&6You" + " &fhave just hit &6" + damaged.getName(),
-					"&fwith an &6AntiBuildStick&f.",
+					"&fYou have just hit &6" + damaged.getName(),
+					"&fwith an &6Anti Build Stick&f.",
 					" ",
 					"&6&l┃ &fThey cannot use/interact with the following",
 					"&6&l┃ &ffor &615 seconds&f.",

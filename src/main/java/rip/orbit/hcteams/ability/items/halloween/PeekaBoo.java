@@ -108,10 +108,8 @@ public class PeekaBoo extends Ability {
 		if (!hits.isEmpty() && hits.get(damager.getUniqueId()) != null && hits.get(damager.getUniqueId()) >= 3) {
 
 			List<String> hitMsg = Arrays.asList(
-					"",
-					"&6&lYOU HAVE HIT SOMEONE!",
 					" ",
-					"&6You" + " &fhave just hit &6" + damaged.getName(),
+					"&6You &fhave just hit &6" + damaged.getName(),
 					"&fwith a &6Peek-a-Boo&f.",
 					" ",
 					"&6&l┃ &fThey are now blinded",

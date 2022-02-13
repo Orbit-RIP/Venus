@@ -89,7 +89,7 @@ public class StatsTopTask {
 			}
 			for (int i = 0; i < (10 - added.size()); i++) {
 				++index;
-				killHolo.addLines(CC.translate("&7" + ((int)index) + ") &fUndefined..."));
+				killHolo.addLines(CC.translate("&7" + ((int)index) + ") &fUnknown..."));
 			}
 
 			killHolo.addLines(ChatColor.GRAY.toString() + ChatColor.STRIKETHROUGH + StringUtils.repeat('-', 32));
@@ -126,7 +126,7 @@ public class StatsTopTask {
 			}
 			for (int i = 0; i < (10 - added.size()); i++) {
 				++index;
-				teamHolo.addLines(CC.translate("&7" + ((int)index) + ") &fUndefined..."));
+				teamHolo.addLines(CC.translate("&7" + ((int)index) + ") &fUnknown..."));
 			}
 
 			teamHolo.addLines(ChatColor.GRAY.toString() + ChatColor.STRIKETHROUGH + StringUtils.repeat('-', 32));

@@ -1,6 +1,7 @@
 package rip.orbit.hcteams.ability.command;
 
 import cc.fyre.proton.command.Command;
+import cc.fyre.proton.command.param.Parameter;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -23,8 +24,6 @@ import java.util.*;
  */
 public class AbilityCommand {
 
-
-
 	@Command(names = "ability totalgiven", permission = "foxtrot.admin")
 	public static void totalGiven(CommandSender sender) {
 
@@ -35,12 +34,11 @@ public class AbilityCommand {
 
 			total += amount;
 		}
-
-		sender.sendMessage(CC.translate("&fTotal Ability Items Given This Map&7: &6" + total));
+		sender.sendMessage(CC.translate("&6Total ability items given this map&7: &f" + total));
 	}
 
 	@Command(names = "ability give", permission = "foxtrot.ability")
-	public static void give(CommandSender sender, @cc.fyre.proton.command.param.Parameter(name = "player") Player target, @cc.fyre.proton.command.param.Parameter(name = "ability") Ability ability, @cc.fyre.proton.command.param.Parameter(name = "amount") int amount) {
+	public static void give(CommandSender sender, @Parameter(name = "player") Player target, @Parameter(name = "ability") Ability ability, @cc.fyre.proton.command.param.Parameter(name = "amount") int amount) {
 		ItemStack item = ability.getStack().clone();
 		item.setAmount(amount);
 
@@ -86,9 +84,9 @@ public class AbilityCommand {
 							ItemMeta meta = stack.getItemMeta();
 
 							List<String> toLore = meta.getLore();
-							toLore.add(CC.chat("&7&lFound In:"));
+							toLore.add(CC.chat("&2&lFound In:"));
 							for (String s : currentAbility.foundInfo()) {
-								toLore.add(CC.chat("&6&l┃ &7" + s));
+								toLore.add(CC.chat("&a&l┃ &f" + s));
 							}
 							meta.setLore(toLore);
 							stack.setItemMeta(meta);

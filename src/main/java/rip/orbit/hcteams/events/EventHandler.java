@@ -279,7 +279,7 @@ public class EventHandler {
 			if (Bukkit.getOnlinePlayers().size() < 5) {
 				EventSchedule.remove(scheduledTime);
 				Bukkit.broadcastMessage(CC.RED + "A KOTH would've started however there were under 5 players online.");
-				Bukkit.broadcastMessage(CC.RED + "A KOTH would've started however there were under 5 players online.");
+//				Bukkit.broadcastMessage(CC.RED + "A KOTH would've started however there were under 5 players online.");
 
 				HCF.getInstance().getLogger().warning("The event scheduler cannot start an event w/ under 10 players on.");
 				return;

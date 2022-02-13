@@ -45,7 +45,7 @@ public class SummaryButton extends Button {
 				"&6&l┃ &fby using our second currency",
 				"&6&l┃ &f'stars'.",
 				"",
-				"&7&oTIP: 1 Level = +1 Ability Per Generation",
+				"&c&lNOTE: &c1 Level = +1 Ability Per Generation",
 				" "
 		));
 	}

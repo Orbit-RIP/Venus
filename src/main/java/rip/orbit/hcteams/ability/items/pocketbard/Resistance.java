@@ -96,9 +96,7 @@ public class Resistance extends Ability {
 
 			List<String> hitMsg = Arrays.asList(
 					"",
-					"&bYou &fhave just activated a " + displayName() + "&f.",
-					" ",
-					"&6&l┃ &fYou now have " + displayName() + " &ffor 5 seconds",
+					"&bYou have just used &l" + displayName() + "&b.",
 					"");
 
 			Team team = HCF.getInstance().getTeamHandler().getTeam(player);

@@ -1,12 +1,11 @@
 package rip.orbit.hcteams.redeem.command;
 
 import cc.fyre.proton.command.Command;
-import cc.fyre.proton.command.param.Parameter;
 import cc.fyre.proton.util.UUIDUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import rip.orbit.hcteams.HCF;
+import rip.orbit.hcteams.redeem.menu.RedeemMenu;
 import rip.orbit.hcteams.redeem.object.Partner;
 import rip.orbit.hcteams.util.CC;
 
@@ -37,24 +36,27 @@ public class RedeemCommand {
 	}
 
 	@Command(names = {"redeem", "claim", "claimpartner", "partners"}, permission = "")
-	public static void redeem(Player sender, @cc.fyre.proton.command.param.Parameter(name = "partner") Partner partner) {
-		if (partner == null) {
-			sender.sendMessage(CC.translate("&cCould not find a partner with that name."));
-			return;
-		}
-		if (HCF.getInstance().getRedeemHandler().getRedeemMap().isToggled(sender.getUniqueId())) {
-			sender.sendMessage(CC.translate("&cYou have already redeemed a partner."));
-			return;
-		}
+	public static void redeem(Player sender) {
+//		if (partner == null) {
+//			sender.sendMessage(CC.translate("&cCould not find a partner with that name."));
+//			return;
+//		}
+//		if (HCF.getInstance().getRedeemHandler().getRedeemMap().isToggled(sender.getUniqueId())) {
+//			sender.sendMessage(CC.translate("&cYou have already redeemed a partner."));
+//			return;
+//		}
+//
+//		sender.sendMessage(CC.translate("&aSuccessfully redeemed for " + partner.getName()));
+//
+//		partner.setRedeemedAmount(partner.getRedeemedAmount() + 1);
+//		partner.save();
+//
+//		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "partnercrates give " + sender.getName() + " 2");
+//
+//		HCF.getInstance().getRedeemHandler().getRedeemMap().setToggled(sender.getUniqueId(), true);
+//	}
+		new RedeemMenu().openMenu(sender.getPlayer());
 
-		sender.sendMessage(CC.translate("&aSuccessfully redeemed for " + partner.getName()));
-
-		partner.setRedeemedAmount(partner.getRedeemedAmount() + 1);
-		partner.save();
-
-		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "partnercrates give " + sender.getName() + " 2");
-
-		HCF.getInstance().getRedeemHandler().getRedeemMap().setToggled(sender.getUniqueId(), true);
 	}
 
 }

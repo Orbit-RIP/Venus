@@ -72,7 +72,7 @@ public class ChatMath extends ChatGame {
 				"&6&lMath Game",
 				" ",
 				"&6&l┃ &fRespond with the correct answer",
-				"&6&l┃ &fto receive a &6Partner Key&7&o.",
+				"&6&l┃ &fto receive a &6Partner Key&f.",
 				" ",
 				"&6&l┃ &fQuestion&7: &6" + picked.getFirstNumber() + " " + picked.getEquationType() + " " + picked.getSecondNumber(),
 				" "

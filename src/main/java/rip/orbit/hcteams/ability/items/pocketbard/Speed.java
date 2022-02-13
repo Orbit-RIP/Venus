@@ -98,9 +98,7 @@ public class Speed extends Ability {
 
 			List<String> hitMsg = Arrays.asList(
 					"",
-					"&aYou &fhave just activated a " + displayName() + "&f.",
-					" ",
-					"&6&l┃ &fYou now have " + displayName() + " &ffor 5 seconds",
+					"&aYou have just used &l" + displayName() + "&a.",
 					"");
 
 			if (team != null) {

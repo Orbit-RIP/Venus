@@ -112,10 +112,8 @@ public class AbilityInspector extends Ability {
 				}
 			}
 			List<String> hitMsg = Arrays.asList(
-					"",
-					"&5&lYOU HAVE HIT SOMEONE!",
 					" ",
-					"&5You" + " &fhave just hit &5" + damaged.getName(),
+					"&fYou have just hit &5" + damaged.getName(),
 					"&fwith an &5Ability Inspector&f.",
 					" ",
 					"&6&l┃ &fTheir inventory contains the following ability items:",

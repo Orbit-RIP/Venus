@@ -96,9 +96,7 @@ public class Strength extends Ability {
 
 			List<String> hitMsg = Arrays.asList(
 					"",
-					"&cYou &fhave just activated a " + displayName() + "&f.",
-					" ",
-					"&6&l┃ &fYou now have " + displayName() + " &ffor 5 seconds",
+					"&cYou have just used &l" + displayName() + "&a.",
 					"");
 
 			Team team = HCF.getInstance().getTeamHandler().getTeam(player);
