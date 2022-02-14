@@ -5,51 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd9976ed-d413-46c8-ba31-e290354f3383" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HCTeams.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HCTeams.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/HolographicDisplays.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/proton-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/proton-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/HCF.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/HCF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/command/AbilityCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/command/AbilityCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/generator/menu/GeneratorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/generator/menu/GeneratorMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/generator/menu/button/SummaryButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/generator/menu/button/SummaryButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/AbilityInspector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/AbilityInspector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/AntiBuildStick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/AntiBuildStick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/Curse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/Curse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/Dome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/Dome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/GhostMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/GhostMode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/halloween/PeekaBoo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/halloween/PeekaBoo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/pocketbard/Regeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/pocketbard/Regeneration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/pocketbard/Resistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/pocketbard/Resistance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/pocketbard/Speed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/pocketbard/Speed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/pocketbard/Strength.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/items/pocketbard/Strength.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/blockshop/BlockShopHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/blockshop/command/BlockShopCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/blockshop/menu/BlockShopMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/blockshop/menu/category/CategoryMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/blockshop/menu/category/DecorationMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/blockshop/type/BlockType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/blockshop/type/DecorationType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/blockshop/type/ShopType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/chat/listeners/ChatListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/chat/listeners/ChatListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/chatgames/type/ChatMath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/chatgames/type/ChatMath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/Ability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/Ability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/AbilityHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/ability/AbilityHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/chatgames/type/ChatQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/chatgames/type/ChatQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/BalanceCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/BalanceCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/lff/menu/buttons/LFFKitButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/lff/menu/buttons/LFFKitButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/BottleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/BottleCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/CopyToCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/CopyToCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/CrowbarCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/CrowbarCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/DeathsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/DeathsCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/EOTWCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/EOTWCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/FFACommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/FFACommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/GoppleResetCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/GoppleResetCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/KOTHRewardKeyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/KOTHRewardKeyCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/LastInvCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/LastInvCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/RefundCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/RefundCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/SOTWCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/SOTWCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/customtimer/command/CustomTimerCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/customtimer/command/CustomTimerCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/customtimer/menu/CustomTimerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/customtimer/menu/CustomTimerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/events/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/events/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/map/stats/task/StatsTopTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/map/stats/task/StatsTopTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/redeem/command/RedeemCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/redeem/command/RedeemCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/scoreboard/FoxtrotScoreGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/scoreboard/FoxtrotScoreGetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/team/commands/team/TeamCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/team/commands/team/TeamCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/SetBalCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/SetBalCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/ShowStaffCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/ShowStaffCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/SpawnCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/SpawnCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/SpawnerCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/SpawnerCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/TeleportAllCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/TeleportAllCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/ToggleEndCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/ToggleEndCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/ToggleLunarNametagsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/commands/staff/ToggleLunarNametagsCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/shops/blockshop/menu/button/NetherButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/shops/blockshop/menu/button/NetherButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/HCTeams-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/HCTeams-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
@@ -85,6 +66,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -103,7 +87,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/rip/orbit/hcteams/shops" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -228,6 +212,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

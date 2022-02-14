@@ -19,7 +19,7 @@ public class FFACommand {
         mode = false;
     }
 
-    @Command(names={ "FFA" }, permission="foxtrot.FFA")
+    @Command(names={ "FFA" }, permission="orbit.headadmin")
     public static void ffa(Player sender) {if (!HCF.getInstance().getConfig().getBoolean("FFA-COMMAND")) {
         sender.sendMessage(CC.translate("&cThis command is only executable in Boolean Active. &7edit boolean in config.yml"));
         return;
@@ -33,7 +33,7 @@ public class FFACommand {
                 @Override
 				public void run() {
                     for(Player players : Bukkit.getOnlinePlayers()) {
-                        if(!players.hasPermission("rank.staff")) {
+                        if(!players.hasPermission("orbit.staff")) {
                             players.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1));
                             players.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0));
                             players.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 0));

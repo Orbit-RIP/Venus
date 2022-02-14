@@ -15,7 +15,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import rip.orbit.hcteams.HCF;
-import rip.orbit.hcteams.ability.items.Dome;
 import rip.orbit.hcteams.commands.staff.SOTWCommand;
 import rip.orbit.hcteams.team.Team;
 import rip.orbit.hcteams.team.dtr.DTRBitmask;
@@ -66,10 +65,9 @@ public abstract class Ability implements Listener {
 			return false;
 		}
 
-		if (Dome.antiAbility.onCooldown(attacker)) {
-			attacker.sendMessage(CC.translate("&cYou cannot do this for &l" + Dome.antiAbility.getRemaining(attacker)));
-			return false;
-		}
+//		if (Dome.antiAbility.onCooldown(attacker)) {
+//			attacker.sendMessage(CC.translate("&cYou cannot do this for &l" + Dome.antiAbility.getRemaining(attacker)));
+//			return false;
 		if (DTRBitmask.CONQUEST.appliesAt(damaged.getLocation()) || DTRBitmask.CONQUEST.appliesAt(attacker.getLocation())) {
 			attacker.sendMessage(CC.chat("&cYou cannot use ability items inside of conquest's territory."));
 			return false;
@@ -125,10 +123,10 @@ public abstract class Ability implements Listener {
 			player.sendMessage(CC.chat("&cYou are currently on &eAbility Item" + "&c cooldown for &l" + HCF.getInstance().getAbilityHandler().getAbilityCD().getRemaining(player)));
 			return false;
 		}
-		if (Dome.antiAbility.onCooldown(player)) {
-			player.sendMessage(CC.translate("&cYou cannot do this for &l" + Dome.antiAbility.getRemaining(player)));
-			return false;
-		}
+//		if (Dome.antiAbility.onCooldown(player)) {
+//			player.sendMessage(CC.translate("&cYou cannot do this for &l" + Dome.antiAbility.getRemaining(player)));
+//			return false;
+
 		if (player.getLocation().distance(player.getWorld().getSpawnLocation()) < 850) {
 			player.sendMessage(CC.chat("&cYou cannot use ability items before 850 blocks."));
 			return false;

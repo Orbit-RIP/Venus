@@ -1,7 +1,6 @@
 package rip.orbit.hcteams.commands.staff;
 
 import cc.fyre.proton.command.Command;
-import cc.fyre.proton.command.param.Parameter;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
@@ -10,7 +9,7 @@ import rip.orbit.hcteams.util.item.InventoryUtils;
 
 public class CrowbarCommand {
 
-    @Command(names={ "crowbar" }, permission="op")
+    @Command(names={ "crowbar" }, permission="orbit.admin")
     public static void crowbar(Player sender) {
         if (sender.getGameMode() != GameMode.CREATIVE) {
             sender.sendMessage(ChatColor.RED + "This command must be ran in creative.");

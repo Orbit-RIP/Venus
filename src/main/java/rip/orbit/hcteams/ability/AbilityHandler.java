@@ -41,7 +41,7 @@ public class AbilityHandler {
 
 		abilities.add(new Switcher());
 //		abilities.add(new Turret());
-		abilities.add(new Dome());
+//		abilities.add(new Dome());
 		abilities.add(new Recon());
 		abilities.add(new AntiBuildStick());
 		abilities.add(new AbilityInspector());

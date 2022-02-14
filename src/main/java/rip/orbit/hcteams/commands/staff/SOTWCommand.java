@@ -33,7 +33,7 @@ public class SOTWCommand {
         }
     }
 
-    @Command(names = { "sotw cancel" }, permission = "foxtrot.sotw")
+    @Command(names = { "sotw cancel" }, permission = "orbit.headadmin")
     public static void sotwCancel(CommandSender sender) {
         Long removed = customTimers.remove("&f&lSOTW ends in");
         if (removed != null && System.currentTimeMillis() < removed) {
@@ -53,10 +53,10 @@ public class SOTWCommand {
             return;
 
         sender.teleport(Bukkit.getWorld("world").getSpawnLocation());
-        sender.sendMessage(ChatColor.GREEN + "Sent to spawn!");
+        sender.sendMessage(ChatColor.GREEN + "You have been teleported to the world spawn!");
     }
 
-    @Command(names = "sotw start", permission = "foxtrot.sotw")
+    @Command(names = "sotw start", permission = "orbit.headadmin")
     public static void sotwStart(CommandSender sender, @cc.fyre.proton.command.param.Parameter(name = "time") String time) {
         int seconds = TimeUtils.parseTime(time);
         if (seconds < 0) {

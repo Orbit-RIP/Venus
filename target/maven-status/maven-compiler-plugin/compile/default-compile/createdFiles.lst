@@ -89,7 +89,6 @@ rip\orbit\hcteams\listener\BlockConvenienceListener.class
 rip\orbit\hcteams\team\menu\BaseMenu$2$3.class
 rip\orbit\hcteams\commands\BottleCommand.class
 rip\orbit\hcteams\map\kits\DefaultKit.class
-rip\orbit\hcteams\ability\items\Dome$1.class
 rip\orbit\hcteams\team\menu\button\ChangePromotionStatusButton.class
 rip\orbit\hcteams\team\commands\ForceKickCommand.class
 rip\orbit\hcteams\deathmessage\objects\PlayerDamage.class
@@ -229,7 +228,6 @@ rip\orbit\hcteams\team\teamupgrades\menu\MeteorMenu$3.class
 rip\orbit\hcteams\persist\PersistMap$1.class
 rip\orbit\hcteams\util\object\Cuboid$1.class
 rip\orbit\hcteams\team\claims\VisualClaim$5.class
-rip\orbit\hcteams\ability\items\Dome.class
 rip\orbit\hcteams\listener\kits\GoldenAppleListener.class
 rip\orbit\hcteams\chatgames\type\ChatMath$1.class
 rip\orbit\hcteams\ability\generator\Generator.class
@@ -369,7 +367,6 @@ rip\orbit\hcteams\shops\blockshop\menu\button\ChristmasButton.class
 rip\orbit\hcteams\events\koth\commands\koth\KOTHTimeCommand.class
 rip\orbit\hcteams\listener\TeamListener$1.class
 rip\orbit\hcteams\map\kits\command\KitEditorCommand.class
-rip\orbit\hcteams\customtimer\command\CustomTimerCommand$2.class
 rip\orbit\hcteams\map\kits\command\KitEditorItemsCommand.class
 rip\orbit\hcteams\team\commands\team\TeamDisbandCommand.class
 rip\orbit\hcteams\commands\FixCommands.class

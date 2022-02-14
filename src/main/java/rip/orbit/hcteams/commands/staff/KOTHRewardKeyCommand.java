@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class KOTHRewardKeyCommand {
 
-    @Command(names={ "kothrewardkey" }, permission="op")
+    @Command(names={ "kothrewardkey" }, permission="orbit.headstaff")
     public static void kothRewardKey(Player sender, @cc.fyre.proton.command.param.Parameter(name = "player", defaultValue = "self") Player player, @cc.fyre.proton.command.param.Parameter(name="koth") String koth, @cc.fyre.proton.command.param.Parameter(name="amount", defaultValue = "1") int amount , @cc.fyre.proton.command.param.Parameter(name="tier", defaultValue = "1") int tier) {
         if (sender.getGameMode() != GameMode.CREATIVE) {
             sender.sendMessage(ChatColor.RED + "This command must be ran in creative.");

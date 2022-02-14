@@ -2,7 +2,6 @@ package rip.orbit.hcteams.commands.staff;
 
 import cc.fyre.proton.Proton;
 import cc.fyre.proton.command.Command;
-import cc.fyre.proton.command.param.Parameter;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
@@ -24,7 +23,7 @@ public class DeathsCommand {
 
     private static DateFormat FORMAT = new SimpleDateFormat("M dd yyyy h:mm a");
 
-    @Command(names={ "deaths" }, permission="foxtrot.deaths")
+    @Command(names={ "deaths" }, permission="orbit.mod")
     public static void deaths(Player sender, @cc.fyre.proton.command.param.Parameter(name="player") UUID player) {
         HCF.getInstance().getServer().getScheduler().runTaskAsynchronously(HCF.getInstance(), () -> {
             sender.sendMessage("");

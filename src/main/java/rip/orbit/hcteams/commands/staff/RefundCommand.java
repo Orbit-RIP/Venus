@@ -13,7 +13,7 @@ import java.util.List;
 
 public class RefundCommand {
 
-    @Command(names = {"refund", "invrestore"}, permission = "foxtrot.staff")
+    @Command(names = {"refund", "invrestore"}, permission = "orbit.mod")
     public static void refundCommand(CommandSender sender, @cc.fyre.proton.command.param.Parameter(name = "player") Player target, @cc.fyre.proton.command.param.Parameter(name = "reason", wildcard = true) String reason){
         if (reason.equals(".")){
             sender.sendMessage(ChatColor.RED + "Invalid Reason.");
@@ -23,7 +23,7 @@ public class RefundCommand {
         HCF.getInstance().getServer().getScheduler().runTaskAsynchronously(HCF.getInstance(), () -> {
             Proton.getInstance().getIRedisCommand().runRedisCommand((redis) -> {
                if (!redis.exists("lastInv:contents:" + target.getUniqueId())){
-                   sender.sendMessage(ChatColor.RED + "No last inventory recorded for " + Proton.getInstance().getUuidCache().name(target.getUniqueId()));
+                   sender.sendMessage(ChatColor.RED + "there is no last inventory recorded for " + Proton.getInstance().getUuidCache().name(target.getUniqueId()));
                    return null;
                }
 

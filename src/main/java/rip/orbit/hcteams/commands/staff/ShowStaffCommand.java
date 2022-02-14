@@ -9,7 +9,7 @@ import rip.orbit.hcteams.util.CC;
 
 public class ShowStaffCommand {
 
-    @Command(names = "togglestaff", permission = "foxtrot.showstaff")
+    @Command(names = "togglestaff", permission = "orbit.staff")
     public static void onCommand(Player player) {
         if (player.hasMetadata("nostaff")) {
             player.removeMetadata("nostaff", HCF.getInstance());

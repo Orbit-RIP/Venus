@@ -13,7 +13,7 @@ import rip.orbit.hcteams.util.CC;
  */
 public class ToggleLunarNametagsCommand {
 
-	@Command(names = {"togglenametagsabove", "togglenametagsabovehead", "togglenametagabove"}, permission = "foxtrot.togglenamtags", description = "command used to toggle lunar nametags incase of lag issues")
+	@Command(names = {"togglenametagsabove", "togglenametagsabovehead", "togglenametagabove"}, permission = "orbit.headstaff", description = "command used to toggle lunar nametags incase of lag issues")
 	public static void togglelunarnametags(CommandSender sender, @cc.fyre.proton.command.param.Parameter(name = "yes|no") String yesOrno) {
 		if (HCF.getInstance().getScoreboardManager().isLunarEnabled()) {
 			HCF.getInstance().getScoreboardManager().setLunarEnabled(false);

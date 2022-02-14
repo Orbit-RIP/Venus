@@ -2,7 +2,6 @@ package rip.orbit.hcteams.commands.staff;
 
 import cc.fyre.proton.Proton;
 import cc.fyre.proton.command.Command;
-import cc.fyre.proton.command.param.Parameter;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -14,7 +13,7 @@ import java.util.UUID;
 
 public class LastInvCommand {
 
-    @Command(names={ "lastinv" }, permission="foxtrot.lastinv")
+    @Command(names={ "lastinv" }, permission="orbit.mod")
     public static void lastInv(Player sender, @cc.fyre.proton.command.param.Parameter(name="player") UUID player) {
         HCF.getInstance().getServer().getScheduler().runTaskAsynchronously(HCF.getInstance(), () -> {
             Proton.getInstance().getIRedisCommand().runRedisCommand((redis) -> {

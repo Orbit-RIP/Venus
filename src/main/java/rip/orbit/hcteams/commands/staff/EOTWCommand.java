@@ -19,7 +19,7 @@ public class EOTWCommand {
     @Getter @Setter private static boolean ffaEnabled = false;
     @Getter @Setter private static long ffaActiveAt = -1L;
     
-    @Command(names={ "EOTW" }, permission="foxtrot.eotw")
+    @Command(names={ "EOTW" }, permission="orbit.headadmin")
     public static void eotw(Player sender) {
         if (sender.getGameMode() != GameMode.CREATIVE) {
             sender.sendMessage(ChatColor.RED + "This command must be ran in creative by an operator.");

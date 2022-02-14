@@ -8,7 +8,7 @@ import rip.orbit.hcteams.HCF;
 public class SpawnCommand {
 
 
-    @Command(names={ "spawn" }, permission="foxtrot.spawn")
+    @Command(names={ "spawn" }, permission="orbit.staff")
     public static void spawn(Player sender) {
         Player player = (Player) sender;
         if (sender.hasPermission("foxtrot.spawn")) {

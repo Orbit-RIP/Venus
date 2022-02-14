@@ -2,7 +2,6 @@ package rip.orbit.hcteams.commands.staff;
 
 import cc.fyre.proton.Proton;
 import cc.fyre.proton.command.Command;
-import cc.fyre.proton.command.param.Parameter;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import rip.orbit.hcteams.HCF;
@@ -11,10 +10,10 @@ import java.util.UUID;
 
 public class SetBalCommand {
 
-    @Command(names={ "SetBal" }, permission="foxtrot.setbal")
+    @Command(names={ "SetBal" }, permission="orbit.admin")
     public static void setBal(CommandSender sender, @cc.fyre.proton.command.param.Parameter(name="player") UUID player, @cc.fyre.proton.command.param.Parameter(name="amount") float amount) {
         if (amount > 10000 && sender instanceof Player && !sender.isOp()) {
-            sender.sendMessage("§cYou cannot set a balance this high. This action has been logged.");
+            sender.sendMessage("§cthe fuck you trying to do?");
             return;
         }
 

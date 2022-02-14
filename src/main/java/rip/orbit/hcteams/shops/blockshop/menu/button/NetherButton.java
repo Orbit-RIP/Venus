@@ -28,7 +28,5 @@ public class NetherButton extends Button {
     }
 
     @Override
-    public void clicked(Player player, int slot, ClickType clickType) {
-        new NetherBlockMenu();
-    }
+    public void clicked(Player player, int slot, ClickType clickType) { new NetherBlockMenu().openMenu(player);}
 }

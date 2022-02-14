@@ -7,7 +7,7 @@ import rip.orbit.hcteams.listener.EndListener;
 
 public class ToggleEndCommand {
 
-    @Command(names={ "ToggleEnd" }, permission="foxtrot.toggleend")
+    @Command(names={ "ToggleEnd" }, permission="orbit.headstaff")
     public static void toggleEnd(Player sender) {
         EndListener.endActive = !EndListener.endActive;
         sender.sendMessage(ChatColor.YELLOW + "End enabled? " + ChatColor.LIGHT_PURPLE + (EndListener.endActive ? "Yes" : "No"));

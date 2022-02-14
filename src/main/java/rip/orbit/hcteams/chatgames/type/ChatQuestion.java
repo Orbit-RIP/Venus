@@ -27,7 +27,7 @@ public class ChatQuestion extends ChatGame {
 	private double tickedTime;
 
 	private final List<Question> questions = Arrays.asList(
-			new Question("What is the name of the server you are currently playing?", Arrays.asList("Orbit", "Orbit.rip")),
+			new Question("What is the name of the server you are currently playing?", Arrays.asList("Orbit", "Orbit.rip", "orbit")),
 			new Question("What time do our SOTW's take place?", Arrays.asList("Saturday 3 PM EST", "Saturday @ 3 PM EST")),
 			new Question("What is the top rank?", Collections.singletonList("Orbit")),
 			new Question("What is the rank you can get by running /freerank?", Collections.singletonList("Star")),

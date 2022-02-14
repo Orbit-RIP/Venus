@@ -191,8 +191,8 @@ public class HCF extends JavaPlugin {
 					players.add("None");
 				}
 				getServer().broadcastMessage(ChatColor.GRAY + "");
-				getServer().broadcastMessage(CC.translate("&6Online Orbit Users &8» &f" + StringUtils.join(players, ", ")));
-				getServer().broadcastMessage(CC.translate("&7You can purchase the Orbit rank at &7&ostore.orbit.rip"));
+				getServer().broadcastMessage(CC.translate("&6Online Orbit Users &f: " + StringUtils.join(players, ", ")));
+				getServer().broadcastMessage(CC.translate("&fYou can purchase the Orbit rank at &6&ostore.orbit.rip"));
 				getServer().broadcastMessage(ChatColor.GRAY + "");
 			}
 		}.runTaskTimer(this, 200L, 18000L);

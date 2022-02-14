@@ -21,7 +21,7 @@ public class BottleCommand implements Listener {
         Bukkit.getPluginManager().registerEvents(this, HCF.getInstance());
     }
     
-    @Command(names = {"bottle"}, permission = "foxtrot.bottle")
+    @Command(names = {"bottle"}, permission = "orbit.donator")
     public static void bottle(Player sender) {
         ItemStack item = sender.getItemInHand();
 

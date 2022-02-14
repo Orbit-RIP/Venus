@@ -15,7 +15,7 @@ public class CopyToCommand {
         }
 
         if (receiver == sender){
-            sender.sendMessage(CC.translate("&cWhat is copying your inventory to yourself going to do?"));
+            sender.sendMessage(CC.translate("&care you dumb? What is copying your inventory to yourself going to do?"));
             return;
         }
 

@@ -9,7 +9,7 @@ import rip.orbit.hcteams.util.CC;
 
 public class TeleportAllCommand {
 
-    @Command(names={ "tpall" }, permission="foxtrot.tpallcommand")
+    @Command(names={ "eotwtpall" }, permission="orbit.headadmin")
     public static void teleportall(Player sender) {
         if (sender.getGameMode() != GameMode.CREATIVE) {
             sender.sendMessage(ChatColor.RED + "This command must be ran in creative.");
