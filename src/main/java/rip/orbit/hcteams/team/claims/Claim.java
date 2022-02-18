@@ -30,7 +30,8 @@ public class Claim implements Iterable<Coordinate> {
     @Getter private String name;
 
     public static Claim fromJson(BasicDBObject obj) {
-        Claim c = new Claim(LocationSerializer.deserialize((BasicDBObject) obj.get("Location1")), LocationSerializer.deserialize((BasicDBObject) obj.get("Location2")));
+        Claim c = new Claim(LocationSerializer.deserialize((BasicDBObject) obj.get("Location1")),
+                LocationSerializer.deserialize((BasicDBObject) obj.get("Location2")));
         c.setName(obj.getString("Name"));
         return c;
     }

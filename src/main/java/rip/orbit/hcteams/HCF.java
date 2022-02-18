@@ -68,6 +68,7 @@ import rip.orbit.hcteams.util.CC;
 import rip.orbit.hcteams.util.DiscordLogger;
 import rip.orbit.hcteams.util.RegenUtils;
 import rip.orbit.hcteams.util.menu.page.MenuListener;
+import rip.orbit.hcteams.wanderer.WandererHandler;
 import rip.orbit.nebula.Nebula;
 
 import java.text.SimpleDateFormat;
@@ -80,351 +81,358 @@ import java.util.function.Predicate;
 @Getter
 public class HCF extends JavaPlugin {
 
-	@Getter private static HCF instance;
-	public static String MONGO_DB_NAME = "HCTeams";
+    @Getter
+    private static HCF instance;
+    public static String MONGO_DB_NAME = "HCTeams";
 
-	private MongoClient mongoPool;
-	private ChatHandler chatHandler;
-	private PvPClassHandler pvpClassHandler;
-	private CarePackageHandler carePackageHandler;
-	private TeamHandler teamHandler;
-	private ServerHandler serverHandler;
-	private MapHandler mapHandler;
-	private CitadelHandler citadelHandler;
-	private EventHandler eventHandler;
-	private ConquestHandler conquestHandler;
-	private CrateHandler crateHandler;
-	private ScoreboardManager scoreboardManager;
-	private CavernHandler cavernHandler;
-	private AbilityHandler abilityHandler;
-	private ChatGameHandler chatGameHandler;
-	private PollHandler pollHandler;
-	private GlowHandler glowHandler;
-	private RedeemHandler redeemHandler;
-	private PatchHandler patchHandler;
+    private MongoClient mongoPool;
+    private ChatHandler chatHandler;
+    private PvPClassHandler pvpClassHandler;
+    private CarePackageHandler carePackageHandler;
+    private TeamHandler teamHandler;
+    private ServerHandler serverHandler;
+    private MapHandler mapHandler;
+    private CitadelHandler citadelHandler;
+    private EventHandler eventHandler;
+    private ConquestHandler conquestHandler;
+    private CrateHandler crateHandler;
+    private ScoreboardManager scoreboardManager;
+    private CavernHandler cavernHandler;
+    private AbilityHandler abilityHandler;
+    private ChatGameHandler chatGameHandler;
+    private PollHandler pollHandler;
+    private GlowHandler glowHandler;
+    private RedeemHandler redeemHandler;
+    private PatchHandler patchHandler;
+    private WandererHandler wandererHandler;
 
-	private ReclaimConfigFile reclaimConfig;
-	private DiscordLogger discordLogger;
-	private CombatLoggerListener combatLoggerListener;
-	@Setter private Predicate<Player> inDuelPredicate = (player) -> false;
+    private ReclaimConfigFile reclaimConfig;
+    private DiscordLogger discordLogger;
+    private CombatLoggerListener combatLoggerListener;
+    @Setter
+    private Predicate<Player> inDuelPredicate = (player) -> false;
 
 
-	@Override
-	public void onEnable() {
+    @Override
+    public void onEnable() {
 
-		if (Bukkit.getServerName().contains(" ")) {
-			System.out.println("*********************************************");
-			System.out.println("               ATTENTION");
-			System.out.println("SET server-name VALUE IN server.properties TO");
-			System.out.println("A PROPER SERVER NAME. THIS WILL BE USED AS THE");
-			System.out.println("MONGO DATABASE NAME.");
-			System.out.println("*********************************************");
-			this.getServer().shutdown();
-			return;
-		}
+        if (Bukkit.getServerName().contains(" ")) {
+            System.out.println("*********************************************");
+            System.out.println("               ATTENTION");
+            System.out.println("SET server-name VALUE IN server.properties TO");
+            System.out.println("A PROPER SERVER NAME. THIS WILL BE USED AS THE");
+            System.out.println("MONGO DATABASE NAME.");
+            System.out.println("*********************************************");
+            this.getServer().shutdown();
+            return;
+        }
 
-		instance = this;
-		saveDefaultConfig();
-		try {
-			String host = getConfig().getString("Mongo.Host", "127.0.0.1");
-			String authDB = getConfig().getString("Mongo.AuthDB", "admin");
-			String username = getConfig().getString("Mongo.Username", "HCTeams");
-			String password = getConfig().getString("Mongo.Password", "");
+        instance = this;
+        saveDefaultConfig();
+        try {
+            String host = getConfig().getString("Mongo.Host", "127.0.0.1");
+            String authDB = getConfig().getString("Mongo.AuthDB", "admin");
+            String username = getConfig().getString("Mongo.Username", "HCTeams");
+            String password = getConfig().getString("Mongo.Password", "");
 
-			boolean authRequired = password.length() > 0;
-			ServerAddress address = new ServerAddress(host, 27017);
+            boolean authRequired = password.length() > 0;
+            ServerAddress address = new ServerAddress(host, 27017);
 
-			if (!authRequired) {
-				mongoPool = new MongoClient(address);
-			} else {
-				mongoPool = new MongoClient(address, MongoCredential.createCredential(
-						username,
-						authDB,
-						password.toCharArray()
-				), MongoClientOptions.builder()
-						.retryWrites(true)
-						.build());
-			}
+            if (!authRequired) {
+                mongoPool = new MongoClient(address);
+            } else {
+                mongoPool = new MongoClient(address, MongoCredential.createCredential(
+                        username,
+                        authDB,
+                        password.toCharArray()
+                ), MongoClientOptions.builder()
+                        .retryWrites(true)
+                        .build());
+            }
 
-			MONGO_DB_NAME = Bukkit.getServerName();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+            MONGO_DB_NAME = Bukkit.getServerName();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 //		FrozenNametagHandler.registerProvider(new FoxtrotNametagProvider());
-		NmsUtils.init();
-		(new DTRHandler()).runTaskTimer(this, 20L, 1200L);
-		(new DTRHandler()).runTaskAsynchronously(this);
-		(new RedisSaveTask()).runTaskTimerAsynchronously(this, 1200L, 1200L);
-		(new PacketBorderThread()).start();
-		scoreboardManager = new ScoreboardManager();
-		setupHandlers();
-		setupPersistence();
-		setupListeners();
-		reclaimConfig = new ReclaimConfigFile(this, "reclaims", this.getDataFolder().getAbsolutePath());
-		if (HCF.getInstance().getConfig().getBoolean("tab.normal")) {
-			Proton.getInstance().getTabHandler().setLayoutProvider(new DefaultFoxtrotTabLayoutProvider());
-		}
-		ProtocolLibrary.getProtocolManager().addPacketListener(new SignGUIPacketAdaper());
-		ProtocolLibrary.getProtocolManager().addPacketListener(new ClientCommandPacketAdaper());
+        NmsUtils.init();
+        (new DTRHandler()).runTaskTimer(this, 20L, 1200L);
+        (new DTRHandler()).runTaskAsynchronously(this);
+        (new RedisSaveTask()).runTaskTimerAsynchronously(this, 1200L, 1200L);
+        (new PacketBorderThread()).start();
+        scoreboardManager = new ScoreboardManager();
+        setupHandlers();
+        setupPersistence();
+        setupListeners();
+        reclaimConfig = new ReclaimConfigFile(this, "reclaims", this.getDataFolder().getAbsolutePath());
+        if (HCF.getInstance().getConfig().getBoolean("tab.normal")) {
+            Proton.getInstance().getTabHandler().setLayoutProvider(new DefaultFoxtrotTabLayoutProvider());
+        }
+        ProtocolLibrary.getProtocolManager().addPacketListener(new SignGUIPacketAdaper());
+        ProtocolLibrary.getProtocolManager().addPacketListener(new ClientCommandPacketAdaper());
 
-		for (World world : Bukkit.getWorlds()) {
-			world.setThundering(false);
-			world.setStorm(false);
-			world.setWeatherDuration(Integer.MAX_VALUE);
-			world.setGameRuleValue("doFireTick", "false");
-			world.setGameRuleValue("mobGriefing", "false");
-			world.setGameRuleValue("doMobGriefing", "false");
-		}
+        for (World world : Bukkit.getWorlds()) {
+            world.setThundering(false);
+            world.setStorm(false);
+            world.setWeatherDuration(Integer.MAX_VALUE);
+            world.setGameRuleValue("doFireTick", "false");
+            world.setGameRuleValue("mobGriefing", "false");
+            world.setGameRuleValue("doMobGriefing", "false");
+        }
 
-		EndListener.loadEndReturn();
+        EndListener.loadEndReturn();
 
-		new BukkitRunnable() {
-			@Override
-			public void run() {
-				List<String> players = new ArrayList<>();
-				Bukkit.getOnlinePlayers().forEach(p -> {
-					if (Nebula.getInstance().getProfileHandler().fromUuid(p.getUniqueId()).getActiveRank().getName().equalsIgnoreCase("Orbit")) {
-						players.add(p.getName());
-					}
-				});
-				if (players.isEmpty()) {
-					players.add("None");
-				}
-				getServer().broadcastMessage(ChatColor.GRAY + "");
-				getServer().broadcastMessage(CC.translate("&6Online Orbit Users &f: " + StringUtils.join(players, ", ")));
-				getServer().broadcastMessage(CC.translate("&fYou can purchase the Orbit rank at &6&ostore.orbit.rip"));
-				getServer().broadcastMessage(ChatColor.GRAY + "");
-			}
-		}.runTaskTimer(this, 200L, 18000L);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                List<String> players = new ArrayList<>();
+                Bukkit.getOnlinePlayers().forEach(p -> {
+                    if (Nebula.getInstance().getProfileHandler().fromUuid(p.getUniqueId()).getActiveRank().getName().equalsIgnoreCase("Orbit")) {
+                        players.add(p.getName());
+                    }
+                });
+                if (players.isEmpty()) {
+                    players.add("None");
+                }
+                getServer().broadcastMessage(ChatColor.GRAY + "");
+                getServer().broadcastMessage(CC.translate("&6Online Orbit Users &f: " + StringUtils.join(players, ", ")));
+                getServer().broadcastMessage(CC.translate("&fYou can purchase the Orbit rank at &6&ostore.orbit.rip"));
+                getServer().broadcastMessage(ChatColor.GRAY + "");
+            }
+        }.runTaskTimer(this, 200L, 18000L);
 
 //		Bukkit.getScheduler().runTaskTimerAsynchronously(this, this::backupTeams, 20 * 60 * 30, 20 * 60 * 30);
-		Bukkit.getScheduler().runTaskTimerAsynchronously(this, new BackupRunnable(), 20 * 60, 20 * 60);
-	}
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new BackupRunnable(), 20 * 60, 20 * 60);
+    }
 
-	public void backupTeams() {
-		long start = System.currentTimeMillis();
-		Bukkit.broadcastMessage(CC.translate("&a&oBacking-up all data, this may take a moment..."));
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-		simpleDateFormat.setTimeZone(TimeZone.getTimeZone("EST"));
-		String date = simpleDateFormat.format(new Date(System.currentTimeMillis()));
-		TeamDataCommands.exportTeamData(Bukkit.getConsoleSender(), "Backups/!teams/backup-" + date.replaceAll("/", "-").replaceAll(":", "-"));
-		Bukkit.broadcastMessage(CC.translate("&a&oAll data has been backed up &7(Took " + (System.currentTimeMillis() - start) + "ms)"));
-	}
+    public void backupTeams() {
+        long start = System.currentTimeMillis();
+        Bukkit.broadcastMessage(CC.translate("&a&oBacking-up all data, this may take a moment..."));
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("EST"));
+        String date = simpleDateFormat.format(new Date(System.currentTimeMillis()));
+        TeamDataCommands.exportTeamData(Bukkit.getConsoleSender(), "Backups/!teams/backup-" + date.replaceAll("/", "-").replaceAll(":", "-"));
+        Bukkit.broadcastMessage(CC.translate("&a&oAll data has been backed up &7(Took " + (System.currentTimeMillis() - start) + "ms)"));
+    }
 
-	@Override
-	public void onDisable() {
-		getEventHandler().saveEvents();
+    @Override
+    public void onDisable() {
+        getEventHandler().saveEvents();
 
-		for (Player player : HCF.getInstance().getServer().getOnlinePlayers()) {
-			getPlaytimeMap().playerQuit(player.getUniqueId(), false);
-			player.setMetadata("loggedout", new FixedMetadataValue(this, true));
-		}
+        for (Player player : HCF.getInstance().getServer().getOnlinePlayers()) {
+            getPlaytimeMap().playerQuit(player.getUniqueId(), false);
+            player.setMetadata("loggedout", new FixedMetadataValue(this, true));
+        }
 
-		for (String playerName : PvPClassHandler.getEquippedKits().keySet()) {
-			PvPClassHandler.getEquippedKits().get(playerName).remove(getServer().getPlayerExact(playerName));
-		}
+        for (String playerName : PvPClassHandler.getEquippedKits().keySet()) {
+            PvPClassHandler.getEquippedKits().get(playerName).remove(getServer().getPlayerExact(playerName));
+        }
 
-		for (Entity e : this.combatLoggerListener.getCombatLoggers()) {
-			if (e != null) {
-				e.remove();
-			}
-		}
-		RedisSaveTask.save(null, false);
-		HCF.getInstance().getServerHandler().save();
-		HCF.getInstance().getMapHandler().save();
-		HCF.getInstance().getMapHandler().getStatsHandler().save();
-		RegenUtils.resetAll();
-		Proton.getInstance().getIRedisCommand().runRedisCommand((jedis) -> {
-			jedis.save();
-			return null;
-		});
-	}
+        for (Entity e : this.combatLoggerListener.getCombatLoggers()) {
+            if (e != null) {
+                e.remove();
+            }
+        }
+        RedisSaveTask.save(null, false);
+        HCF.getInstance().getServerHandler().save();
+        HCF.getInstance().getMapHandler().save();
+        HCF.getInstance().getMapHandler().getStatsHandler().save();
+        RegenUtils.resetAll();
+        Proton.getInstance().getIRedisCommand().runRedisCommand((jedis) -> {
+            jedis.save();
+            return null;
+        });
+    }
 
-	private void setupHandlers() {
-		serverHandler = new ServerHandler();
-		mapHandler = new MapHandler();
-		mapHandler.load();
-		teamHandler = new TeamHandler();
-		chatGameHandler = new ChatGameHandler();
-		pollHandler = new PollHandler();
-		LandBoard.getInstance().loadFromTeams();
-		reclaimHandler = new ReclaimHandler();
-		chatHandler = new ChatHandler();
-		redeemHandler = new RedeemHandler();
-		citadelHandler = new CitadelHandler();
-		pvpClassHandler = new PvPClassHandler();
-		eventHandler = new EventHandler();
-		conquestHandler = new ConquestHandler();
-		carePackageHandler = new CarePackageHandler();
-		abilityHandler = new AbilityHandler();
-		crateHandler = new CrateHandler();
-		discordLogger = new DiscordLogger(this);
-		patchHandler = new PatchHandler();
+    private void setupHandlers() {
+        serverHandler = new ServerHandler();
+        mapHandler = new MapHandler();
+        mapHandler.load();
+        teamHandler = new TeamHandler();
+        chatGameHandler = new ChatGameHandler();
+        pollHandler = new PollHandler();
+        LandBoard.getInstance().loadFromTeams();
+        reclaimHandler = new ReclaimHandler();
+        chatHandler = new ChatHandler();
+        redeemHandler = new RedeemHandler();
+        citadelHandler = new CitadelHandler();
+        pvpClassHandler = new PvPClassHandler();
+        eventHandler = new EventHandler();
+        conquestHandler = new ConquestHandler();
+        carePackageHandler = new CarePackageHandler();
+        abilityHandler = new AbilityHandler();
+        crateHandler = new CrateHandler();
+        discordLogger = new DiscordLogger(this);
+        patchHandler = new PatchHandler();
+        wandererHandler = new WandererHandler();
 
-		if (getConfig().getBoolean("glowstoneMountain", false)) {
-			glowHandler = new GlowHandler();
-		}
+        if (getConfig().getBoolean("glowstoneMountain", false)) {
+            glowHandler = new GlowHandler();
+        }
 
-		if (getConfig().getBoolean("cavern", false)) {
-			cavernHandler = new CavernHandler();
-		}
+        if (getConfig().getBoolean("cavern", false)) {
+            cavernHandler = new CavernHandler();
+        }
 
-		Proton.getInstance().getCommandHandler().registerAll(this);
-		for (Class<?> clazz : ClassUtils.getClassesInPackage(this, getClass().getPackage().getName())) {
-			if (clazz == null || clazz.getCanonicalName() == null) continue;
-			if (clazz.getCanonicalName().contains("conditional")) continue;
-			Proton.getInstance().getCommandHandler().registerClass(clazz);
-		}
+        Proton.getInstance().getCommandHandler().registerAll(this);
+        for (Class<?> clazz : ClassUtils.getClassesInPackage(this, getClass().getPackage().getName())) {
+            if (clazz == null || clazz.getCanonicalName() == null) continue;
+            if (clazz.getCanonicalName().contains("conditional")) continue;
+            Proton.getInstance().getCommandHandler().registerClass(clazz);
+        }
 
-		DeathMessageHandler.init();
-		DTRHandler.loadDTR();
-	}
+        DeathMessageHandler.init();
+        DTRHandler.loadDTR();
+    }
 
-	private void setupListeners() {
-		getServer().getPluginManager().registerEvents(new MenuListener(), this);
-		getServer().getPluginManager().registerEvents(new DisposibalSignListener(this), this);
-		getServer().getPluginManager().registerEvents(new PurgeListener(), this);
-		getServer().getPluginManager().registerEvents(new MapListener(), this);
-		getServer().getPluginManager().registerEvents(new AntiGlitchListener(), this);
-		getServer().getPluginManager().registerEvents(new BasicPreventionListener(), this);
-		getServer().getPluginManager().registerEvents(new BorderListener(), this);
-		getServer().getPluginManager().registerEvents((combatLoggerListener = new CombatLoggerListener()), this);
-		getServer().getPluginManager().registerEvents(new CrowbarListener(), this);
-		getServer().getPluginManager().registerEvents(new EnderpearlCooldownHandler(), this);
-		getServer().getPluginManager().registerEvents(new EndListener(), this);
-		getServer().getPluginManager().registerEvents(new ElevatorListener(), this);
-		getServer().getPluginManager().registerEvents(new FoundDiamondsListener(), this);
-		getServer().getPluginManager().registerEvents(new FoxListener(), this);
-		getServer().getPluginManager().registerEvents(new GoldenAppleListener(), this);
-		getServer().getPluginManager().registerEvents(new KOTHRewardKeyListener(), this);
-		getServer().getPluginManager().registerEvents(new PvPTimerListener(), this);
-		getServer().getPluginManager().registerEvents(new KitListener(), this);
-		getServer().getPluginManager().registerEvents(new StarMineListener(), this);
-	    getServer().getPluginManager().registerEvents(new NetherPortalListener(), this);
-		getServer().getPluginManager().registerEvents(new PortalTrapListener(), this);
-		getServer().getPluginManager().registerEvents(new ProfileListener(), this);
-		getServer().getPluginManager().registerEvents(new SignSubclaimListener(), this);
-		getServer().getPluginManager().registerEvents(new SpawnerTrackerListener(), this);
-		getServer().getPluginManager().registerEvents(new SpawnListener(), this);
-		getServer().getPluginManager().registerEvents(new SpawnTagListener(), this);
-		getServer().getPluginManager().registerEvents(new TeamListener(), this);
+    private void setupListeners() {
+        getServer().getPluginManager().registerEvents(new MenuListener(), this);
+        getServer().getPluginManager().registerEvents(new DisposibalSignListener(this), this);
+        getServer().getPluginManager().registerEvents(new PurgeListener(), this);
+        getServer().getPluginManager().registerEvents(new MapListener(), this);
+        getServer().getPluginManager().registerEvents(new AntiGlitchListener(), this);
+        getServer().getPluginManager().registerEvents(new BasicPreventionListener(), this);
+        getServer().getPluginManager().registerEvents(new BorderListener(), this);
+        getServer().getPluginManager().registerEvents((combatLoggerListener = new CombatLoggerListener()), this);
+        getServer().getPluginManager().registerEvents(new CrowbarListener(), this);
+        getServer().getPluginManager().registerEvents(new EnderpearlCooldownHandler(), this);
+        getServer().getPluginManager().registerEvents(new EndListener(), this);
+        getServer().getPluginManager().registerEvents(new ElevatorListener(), this);
+        getServer().getPluginManager().registerEvents(new FoundDiamondsListener(), this);
+        getServer().getPluginManager().registerEvents(new FoxListener(), this);
+        getServer().getPluginManager().registerEvents(new GoldenAppleListener(), this);
+        getServer().getPluginManager().registerEvents(new KOTHRewardKeyListener(), this);
+        getServer().getPluginManager().registerEvents(new PvPTimerListener(), this);
+        getServer().getPluginManager().registerEvents(new KitListener(), this);
+        getServer().getPluginManager().registerEvents(new StarMineListener(), this);
+        getServer().getPluginManager().registerEvents(new NetherPortalListener(), this);
+        getServer().getPluginManager().registerEvents(new PortalTrapListener(), this);
+        getServer().getPluginManager().registerEvents(new ProfileListener(), this);
+        getServer().getPluginManager().registerEvents(new SignSubclaimListener(), this);
+        getServer().getPluginManager().registerEvents(new SpawnerTrackerListener(), this);
+        getServer().getPluginManager().registerEvents(new SpawnListener(), this);
+        getServer().getPluginManager().registerEvents(new SpawnTagListener(), this);
+        getServer().getPluginManager().registerEvents(new TeamListener(), this);
 //		getServer().getPluginManager().registerEvents(new WebsiteListener(), this);
-		getServer().getPluginManager().registerEvents(new PotionLimiterListeners(), this);
-		getServer().getPluginManager().registerEvents(new EnchantmentLimiterListeners(), this);
-		getServer().getPluginManager().registerEvents(new TeamSubclaimCommand(), this);
-		getServer().getPluginManager().registerEvents(new TeamClaimCommand(), this);
-		getServer().getPluginManager().registerEvents(new rip.orbit.hcteams.util.menu.MenuListener(this), this);
-		getServer().getPluginManager().registerEvents(new LunarClientListener(), this);
-		getServer().getPluginManager().registerEvents(new StatTrakListener(), this);
+        getServer().getPluginManager().registerEvents(new PotionLimiterListeners(), this);
+        getServer().getPluginManager().registerEvents(new EnchantmentLimiterListeners(), this);
+        getServer().getPluginManager().registerEvents(new TeamSubclaimCommand(), this);
+        getServer().getPluginManager().registerEvents(new TeamClaimCommand(), this);
+        getServer().getPluginManager().registerEvents(new rip.orbit.hcteams.util.menu.MenuListener(this), this);
+        getServer().getPluginManager().registerEvents(new LunarClientListener(), this);
+        getServer().getPluginManager().registerEvents(new StatTrakListener(), this);
 
-		// Removed because there's a strength fix in the spigot.
-		// getServer().getPluginManager().registerEvents(new StrengthListener(), this);
+        // Removed because there's a strength fix in the spigot.
+        // getServer().getPluginManager().registerEvents(new StrengthListener(), this);
 
-		if (getServerHandler().isReduceArmorDamage()) {
-			getServer().getPluginManager().registerEvents(new ArmorDamageListener(), this);
-		}
+        if (getServerHandler().isReduceArmorDamage()) {
+            getServer().getPluginManager().registerEvents(new ArmorDamageListener(), this);
+        }
 
-		if (getServerHandler().isBlockEntitiesThroughPortals()) {
-			getServer().getPluginManager().registerEvents(new EntityPortalListener(), this);
-		}
+        if (getServerHandler().isBlockEntitiesThroughPortals()) {
+            getServer().getPluginManager().registerEvents(new EntityPortalListener(), this);
+        }
 
-		if (getServerHandler().isBlockRemovalEnabled()) {
-			getServer().getPluginManager().registerEvents(new BlockRegenListener(), this);
-		}
+        if (getServerHandler().isBlockRemovalEnabled()) {
+            getServer().getPluginManager().registerEvents(new BlockRegenListener(), this);
+        }
 
-		// Register kitmap specific listeners
-		if (getServerHandler().isVeltKitMap() || getMapHandler().isKitMap()) {
-			getServer().getPluginManager().registerEvents(new KitMapListener(), this);
-			getServer().getPluginManager().registerEvents(new BountyListerner(), this);
-			getServer().getPluginManager().registerEvents(new CarePackageHandler(), this);
-			getServer().getPluginManager().registerEvents(new RefillSignListener(), this);
-			getServer().getPluginManager().registerEvents(new RefillSignCreateListener(), this);
-		}
-		getServer().getPluginManager().registerEvents(new BlockConvenienceListener(), this);
-		getServer().getPluginManager().registerEvents(new KingEventListener(), this);
+        // Register kitmap specific listeners
+        if (getServerHandler().isVeltKitMap() || getMapHandler().isKitMap()) {
+            getServer().getPluginManager().registerEvents(new KitMapListener(), this);
+            getServer().getPluginManager().registerEvents(new BountyListerner(), this);
+            getServer().getPluginManager().registerEvents(new CarePackageHandler(), this);
+            getServer().getPluginManager().registerEvents(new RefillSignListener(), this);
+            getServer().getPluginManager().registerEvents(new RefillSignCreateListener(), this);
+        }
+        getServer().getPluginManager().registerEvents(new BlockConvenienceListener(), this);
+        getServer().getPluginManager().registerEvents(new KingEventListener(), this);
 
-	}
+    }
 
-	private void setupPersistence() {
-		(playtimeMap = new PlaytimeMap()).loadFromRedis();
-		(oppleMap = new OppleMap()).loadFromRedis();
-		(deathbanMap = new DeathbanMap()).loadFromRedis();
-		(PvPTimerMap = new PvPTimerMap()).loadFromRedis();
-		(startingPvPTimerMap = new StartingPvPTimerMap()).loadFromRedis();
-		(chatModeMap = new ChatModeMap()).loadFromRedis();
-		(toggleGlobalChatMap = new ToggleGlobalChatMap()).loadFromRedis();
-		(toggleLFFMessageMap = new ToggleLFFMessageMap()).loadFromRedis();
-		(claimOnSbMap = new ClaimOnSbMap()).loadFromRedis();
-		(receiveFactionInviteMap = new ReceiveFactionInviteMap()).loadFromRedis();
-		(teamColorMap = new TeamColorMap()).loadFromRedis();
-		(enemyColorMap = new EnemyColorMap()).loadFromRedis();
-		(allyColorMap = new AllyColorMap()).loadFromRedis();
-		(archerTagColorMap = new ArcherTagColorMap()).loadFromRedis();
-		(focusColorMap = new FocusColorMap()).loadFromRedis();
-		(staffBoardMap = new StaffBoardMap()).loadFromRedis();
-		(fishingKitMap = new FishingKitMap()).loadFromRedis();
-		(livesMap = new LivesMap()).loadFromRedis();
-		(chatSpyMap = new ChatSpyMap()).loadFromRedis();
-		(diamondMinedMap = new DiamondMinedMap()).loadFromRedis();
-		(goldMinedMap = new GoldMinedMap()).loadFromRedis();
-		(ironMinedMap = new IronMinedMap()).loadFromRedis();
-		(coalMinedMap = new CoalMinedMap()).loadFromRedis();
-		(redstoneMinedMap = new RedstoneMinedMap()).loadFromRedis();
-		(lapisMinedMap = new LapisMinedMap()).loadFromRedis();
-		(emeraldMinedMap = new EmeraldMinedMap()).loadFromRedis();
-		(firstJoinMap = new FirstJoinMap()).loadFromRedis();
-		(lastJoinMap = new LastJoinMap()).loadFromRedis();
-		(wrappedBalanceMap = new WrappedBalanceMap()).loadFromRedis();
-		(toggleFoundDiamondsMap = new ToggleFoundDiamondsMap()).loadFromRedis();
-		(toggleDeathMessageMap = new ToggleDeathMessageMap()).loadFromRedis();
-		(tabListModeMap = new TabListModeMap()).loadFromRedis();
-		(cobblePickupMap = new CobblePickupMap()).loadFromRedis();
-		(baseCooldownMap = new BaseCooldownMap()).loadFromRedis();
-		(toggleAbilityCDsSBMap = new ToggleAbilityCDsSBMap()).loadFromRedis();
-		(starsMaps = new StarsMap()).loadFromRedis();
-		(receiveGeneratorMessagesMap = new ReceiveGeneratorMessagesMap()).loadFromRedis();
-	}
+    private void setupPersistence() {
+        (playtimeMap = new PlaytimeMap()).loadFromRedis();
+        (oppleMap = new OppleMap()).loadFromRedis();
+        (deathbanMap = new DeathbanMap()).loadFromRedis();
+        (PvPTimerMap = new PvPTimerMap()).loadFromRedis();
+        (startingPvPTimerMap = new StartingPvPTimerMap()).loadFromRedis();
+        (chatModeMap = new ChatModeMap()).loadFromRedis();
+        (toggleGlobalChatMap = new ToggleGlobalChatMap()).loadFromRedis();
+        (toggleLFFMessageMap = new ToggleLFFMessageMap()).loadFromRedis();
+        (claimOnSbMap = new ClaimOnSbMap()).loadFromRedis();
+        (receiveFactionInviteMap = new ReceiveFactionInviteMap()).loadFromRedis();
+        (teamColorMap = new TeamColorMap()).loadFromRedis();
+        (enemyColorMap = new EnemyColorMap()).loadFromRedis();
+        (allyColorMap = new AllyColorMap()).loadFromRedis();
+        (archerTagColorMap = new ArcherTagColorMap()).loadFromRedis();
+        (focusColorMap = new FocusColorMap()).loadFromRedis();
+        (staffBoardMap = new StaffBoardMap()).loadFromRedis();
+        (fishingKitMap = new FishingKitMap()).loadFromRedis();
+        (livesMap = new LivesMap()).loadFromRedis();
+        (chatSpyMap = new ChatSpyMap()).loadFromRedis();
+        (diamondMinedMap = new DiamondMinedMap()).loadFromRedis();
+        (goldMinedMap = new GoldMinedMap()).loadFromRedis();
+        (ironMinedMap = new IronMinedMap()).loadFromRedis();
+        (coalMinedMap = new CoalMinedMap()).loadFromRedis();
+        (redstoneMinedMap = new RedstoneMinedMap()).loadFromRedis();
+        (lapisMinedMap = new LapisMinedMap()).loadFromRedis();
+        (emeraldMinedMap = new EmeraldMinedMap()).loadFromRedis();
+        (firstJoinMap = new FirstJoinMap()).loadFromRedis();
+        (lastJoinMap = new LastJoinMap()).loadFromRedis();
+        (wrappedBalanceMap = new WrappedBalanceMap()).loadFromRedis();
+        (toggleFoundDiamondsMap = new ToggleFoundDiamondsMap()).loadFromRedis();
+        (toggleDeathMessageMap = new ToggleDeathMessageMap()).loadFromRedis();
+        (tabListModeMap = new TabListModeMap()).loadFromRedis();
+        (cobblePickupMap = new CobblePickupMap()).loadFromRedis();
+        (baseCooldownMap = new BaseCooldownMap()).loadFromRedis();
+        (toggleAbilityCDsSBMap = new ToggleAbilityCDsSBMap()).loadFromRedis();
+        (starsMaps = new StarsMap()).loadFromRedis();
+        (receiveGeneratorMessagesMap = new ReceiveGeneratorMessagesMap()).loadFromRedis();
+    }
 
-	private PlaytimeMap playtimeMap;
-	private OppleMap oppleMap;
-	private DeathbanMap deathbanMap;
-	private rip.orbit.hcteams.persist.maps.PvPTimerMap PvPTimerMap;
-	private StartingPvPTimerMap startingPvPTimerMap;
-	private ChatModeMap chatModeMap;
-	private FishingKitMap fishingKitMap;
-	private ToggleGlobalChatMap toggleGlobalChatMap;
-	private ToggleLFFMessageMap toggleLFFMessageMap;
-	private BaseCooldownMap baseCooldownMap;
-	private StaffBoardMap staffBoardMap;
-	private ClaimOnSbMap claimOnSbMap;
-	private ReceiveFactionInviteMap receiveFactionInviteMap;
-	private TeamColorMap teamColorMap;
-	private EnemyColorMap enemyColorMap;
-	private AllyColorMap allyColorMap;
-	private ArcherTagColorMap archerTagColorMap;
-	private FocusColorMap focusColorMap;
-	private ChatSpyMap chatSpyMap;
-	private DiamondMinedMap diamondMinedMap;
-	private GoldMinedMap goldMinedMap;
-	private IronMinedMap ironMinedMap;
-	private CoalMinedMap coalMinedMap;
-	private RedstoneMinedMap redstoneMinedMap;
-	private LapisMinedMap lapisMinedMap;
-	private EmeraldMinedMap emeraldMinedMap;
-	private FirstJoinMap firstJoinMap;
-	private ReclaimHandler reclaimHandler;
-	private LastJoinMap lastJoinMap;
-	private LivesMap livesMap;
-	private WrappedBalanceMap wrappedBalanceMap;
-	private ToggleFoundDiamondsMap toggleFoundDiamondsMap;
-	private ToggleDeathMessageMap toggleDeathMessageMap;
-	private TabListModeMap tabListModeMap;
-	private CobblePickupMap cobblePickupMap;
-	private ToggleAbilityCDsSBMap toggleAbilityCDsSBMap;
-	private ReceiveGeneratorMessagesMap receiveGeneratorMessagesMap;
-	private StarsMap starsMaps;
-	@Setter private ArcherClass archerClass;
-	@Setter private BardClass bardClass;
-	@Setter private RogueClass rogueClass;
+    private PlaytimeMap playtimeMap;
+    private OppleMap oppleMap;
+    private DeathbanMap deathbanMap;
+    private rip.orbit.hcteams.persist.maps.PvPTimerMap PvPTimerMap;
+    private StartingPvPTimerMap startingPvPTimerMap;
+    private ChatModeMap chatModeMap;
+    private FishingKitMap fishingKitMap;
+    private ToggleGlobalChatMap toggleGlobalChatMap;
+    private ToggleLFFMessageMap toggleLFFMessageMap;
+    private BaseCooldownMap baseCooldownMap;
+    private StaffBoardMap staffBoardMap;
+    private ClaimOnSbMap claimOnSbMap;
+    private ReceiveFactionInviteMap receiveFactionInviteMap;
+    private TeamColorMap teamColorMap;
+    private EnemyColorMap enemyColorMap;
+    private AllyColorMap allyColorMap;
+    private ArcherTagColorMap archerTagColorMap;
+    private FocusColorMap focusColorMap;
+    private ChatSpyMap chatSpyMap;
+    private DiamondMinedMap diamondMinedMap;
+    private GoldMinedMap goldMinedMap;
+    private IronMinedMap ironMinedMap;
+    private CoalMinedMap coalMinedMap;
+    private RedstoneMinedMap redstoneMinedMap;
+    private LapisMinedMap lapisMinedMap;
+    private EmeraldMinedMap emeraldMinedMap;
+    private FirstJoinMap firstJoinMap;
+    private ReclaimHandler reclaimHandler;
+    private LastJoinMap lastJoinMap;
+    private LivesMap livesMap;
+    private WrappedBalanceMap wrappedBalanceMap;
+    private ToggleFoundDiamondsMap toggleFoundDiamondsMap;
+    private ToggleDeathMessageMap toggleDeathMessageMap;
+    private TabListModeMap tabListModeMap;
+    private CobblePickupMap cobblePickupMap;
+    private ToggleAbilityCDsSBMap toggleAbilityCDsSBMap;
+    private ReceiveGeneratorMessagesMap receiveGeneratorMessagesMap;
+    private StarsMap starsMaps;
+    @Setter
+    private ArcherClass archerClass;
+    @Setter
+    private BardClass bardClass;
+    @Setter
+    private RogueClass rogueClass;
 
 }
