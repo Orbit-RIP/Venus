@@ -23,139 +23,139 @@ import java.util.Random;
  */
 public class ChatMath extends ChatGame {
 
-	private Equation pickedEquation = null;
-	private double tickedTime;
+    private Equation pickedEquation = null;
+    private double tickedTime;
 
-	private final List<Equation> equations = new ArrayList<>();
+    private final List<Equation> equations = new ArrayList<>();
 
-	public ChatMath() {
-		for (int i = 0; i < 50; i++) {
-			int first = new Random().nextInt(1500);
-			int second = new Random().nextInt(2000);
-			if (i <= 15) {
-				equations.add(new Equation(first, second, "*"));
-			} else if (i <= 30) {
-				equations.add(new Equation(first, second, "+"));
-			} else if (i <= 40) {
-				equations.add(new Equation(first, second, "-"));
-			} else if (i <= 45) {
-				equations.add(new Equation(first, second, "/"));
-			}
-		}
-	}
+    public ChatMath() {
+        for (int i = 0; i < 50; i++) {
+            int first = new Random().nextInt(1500);
+            int second = new Random().nextInt(2000);
+            if (i <= 15) {
+                equations.add(new Equation(first, second, "*"));
+            } else if (i <= 30) {
+                equations.add(new Equation(first, second, "+"));
+            } else if (i <= 40) {
+                equations.add(new Equation(first, second, "-"));
+            } else if (i <= 45) {
+                equations.add(new Equation(first, second, "/"));
+            }
+        }
+    }
 
-	@Override
-	public String name() {
-		return "Math Game";
-	}
+    @Override
+    public String name() {
+        return "Math Game";
+    }
 
-	@Override
-	public void start() {
-		this.started = true;
-		new BukkitRunnable() {
-			@Override
-			public void run() {
-				if (!started) {
-					cancel();
-					return;
-				}
-				tickedTime = tickedTime + 0.1;
-			}
-		}.runTaskTimer(HCF.getInstance(), 5, 5);
+    @Override
+    public void start() {
+        this.started = true;
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (!started) {
+                    cancel();
+                    return;
+                }
+                tickedTime = tickedTime + 0.1;
+            }
+        }.runTaskTimer(HCF.getInstance(), 5, 5);
 
-		Equation picked = equations.get((new Random().nextInt(equations.size())) - 1);
+        Equation picked = equations.get((new Random().nextInt(equations.size())) - 1);
 
-		this.pickedEquation = picked;
+        this.pickedEquation = picked;
 
-		List<String> format = Arrays.asList(
-				" ",
-				"&6&lMath Game",
-				" ",
-				"&6&l┃ &fRespond with the correct answer",
-				"&6&l┃ &fto receive a &6Partner Key&f.",
-				" ",
-				"&6&l┃ &fQuestion&7: &6" + picked.getFirstNumber() + " " + picked.getEquationType() + " " + picked.getSecondNumber(),
-				" "
-		);
+        List<String> format = Arrays.asList(
+                " ",
+                "&6&lMath Game",
+                " ",
+                "&6&l┃ &fRespond with the correct answer",
+                "&6&l┃ &fto receive a &6Partner Key&f.",
+                " ",
+                "&6&l┃ &fQuestion&7: &6" + picked.getFirstNumber() + " " + picked.getEquationType() + " " + picked.getSecondNumber(),
+                " "
+        );
 
-		format.forEach(s -> {
-			Bukkit.broadcastMessage(CC.translate(s));
-		});
+        format.forEach(s -> {
+            Bukkit.broadcastMessage(CC.translate(s));
+        });
 
-		new BukkitRunnable() {
-			@Override
-			public void run() {
-				if (!started)
-					return;
-				end();
-			}
-		}.runTaskLater(HCF.getInstance(), 20 * 15);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (!started)
+                    return;
+                end();
+            }
+        }.runTaskLater(HCF.getInstance(), 20 * 15);
 
-	}
+    }
 
-	@Override
-	public void end() {
+    @Override
+    public void end() {
 
-		this.started = false;
+        this.started = false;
 
-		Bukkit.broadcastMessage(CC.translate("&cNobody answered the equation in time."));
+        Bukkit.broadcastMessage(CC.translate("&cNobody answered the equation in time."));
 
-	}
+    }
 
-	@EventHandler
-	public void onChat(AsyncPlayerChatEvent event) {
-		if (this.started) {
-			if (this.pickedEquation != null) {
-				try {
-					if (this.pickedEquation.getTotal() == Integer.parseInt(event.getMessage())) {
-						this.started = false;
-						event.setCancelled(true);
+    @EventHandler
+    public void onChat(AsyncPlayerChatEvent event) {
+        if (this.started) {
+            if (this.pickedEquation != null) {
+                try {
+                    if (this.pickedEquation.getTotal() == Integer.parseInt(event.getMessage())) {
+                        this.started = false;
+                        event.setCancelled(true);
 
-						List<String> winMessage = Arrays.asList(
-								"",
-								"&6&lMath Game",
-								"",
-								"&6&l┃ &fWinner&7: &6" + event.getPlayer().getDisplayName(),
-								"&6&l┃ &fAnswer&7: &6" + this.pickedEquation.getTotal(),
-								"&6&l┃ &fTime&7: &6" + Team.DTR_FORMAT2.format(tickedTime) + "s",
-								""
-						);
+                        List<String> winMessage = Arrays.asList(
+                                "",
+                                "&6&lMath Game",
+                                "",
+                                "&6&l┃ &fWinner&7: &6" + event.getPlayer().getDisplayName(),
+                                "&6&l┃ &fAnswer&7: &6" + this.pickedEquation.getTotal(),
+                                "&6&l┃ &fTime&7: &6" + Team.DTR_FORMAT2.format(tickedTime) + "s",
+                                ""
+                        );
 
-						winMessage.forEach(s -> {
-							Bukkit.broadcastMessage(CC.translate(s));
-						});
+                        winMessage.forEach(s -> {
+                            Bukkit.broadcastMessage(CC.translate(s));
+                        });
 
-						Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "partnercrates give " + event.getPlayer().getName() + " 1");
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "partnercrates give " + event.getPlayer().getName() + " 1");
 
-					}
-				} catch (NumberFormatException ignored) {
+                    }
+                } catch (NumberFormatException ignored) {
 
-				}
-			}
-		}
-	}
+                }
+            }
+        }
+    }
 
-	@AllArgsConstructor
-	@Data
-	public static class Equation {
-		private final int firstNumber;
-		private final int secondNumber;
-		private final String equationType;
+    @AllArgsConstructor
+    @Data
+    public static class Equation {
+        private final int firstNumber;
+        private final int secondNumber;
+        private final String equationType;
 
-		public int getTotal() {
-			if (this.equationType.equalsIgnoreCase("*")) {
-				return firstNumber * secondNumber;
-			} else if (this.equationType.equalsIgnoreCase("+")) {
-				return firstNumber + secondNumber;
-			} else if (this.equationType.equalsIgnoreCase("/")) {
-				return firstNumber / secondNumber;
-			} else if (this.equationType.equalsIgnoreCase("-")) {
-				return firstNumber - secondNumber;
-			} else {
-				return firstNumber * secondNumber;
-			}
-		}
+        public int getTotal() {
+            if (this.equationType.equalsIgnoreCase("*")) {
+                return firstNumber * secondNumber;
+            } else if (this.equationType.equalsIgnoreCase("+")) {
+                return firstNumber + secondNumber;
+            } else if (this.equationType.equalsIgnoreCase("/")) {
+                return firstNumber / secondNumber;
+            } else if (this.equationType.equalsIgnoreCase("-")) {
+                return firstNumber - secondNumber;
+            } else {
+                return firstNumber * secondNumber;
+            }
+        }
 
-	}
+    }
 
 }
