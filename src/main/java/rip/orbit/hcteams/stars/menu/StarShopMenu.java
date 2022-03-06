@@ -29,7 +29,7 @@ public class StarShopMenu extends Menu {
 
 	@Override
 	public String getTitle(Player player) {
-		return CC.translate("&6StarShop (Stars: " + HCF.getInstance().getStarsMaps().get(player.getUniqueId()) + ")");
+		return CC.translate("&7Star Shop (Stars: " + HCF.getInstance().getStarsMaps().get(player.getUniqueId()) + ")");
 	}
 
 	@Override
@@ -42,9 +42,9 @@ public class StarShopMenu extends Menu {
 			++i;
 		}
 
-		buttons.put(51, new ArmorUpgradeButton(Material.IRON_BLOCK,Enchantment.DURABILITY, 3, 70, "Unbreaking 3"));
-		buttons.put(52, new FeatherArmorUpgradeButton(Material.CHAINMAIL_BOOTS,85, "Feather Falling IV"));
-		buttons.put(53, new ArmorUpgradeButton(Material.CHAINMAIL_HELMET,Enchantment.PROTECTION_ENVIRONMENTAL, 2, 100, "Protection II"));
+//		buttons.put(51, new ArmorUpgradeButton(Material.IRON_BLOCK,Enchantment.DURABILITY, 3, 70, "Unbreaking 3"));
+//		buttons.put(52, new FeatherArmorUpgradeButton(Material.CHAINMAIL_BOOTS,85, "Feather Falling IV"));
+//		buttons.put(53, new ArmorUpgradeButton(Material.CHAINMAIL_HELMET,Enchantment.PROTECTION_ENVIRONMENTAL, 2, 100, "Protection II"));
 
 		return buttons;
 	}

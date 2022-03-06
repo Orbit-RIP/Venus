@@ -70,10 +70,9 @@ public class RedeemMenu extends Menu {
 
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "airdrop " + player.getName() + " 1");
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "package " + player.getName() + " 1");
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bcraw &6» &e" + player.getName() + " &fhas just used &e/redeem &ffor free rewards!");
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bc " + player.getDisplayName() + " &fhas just used &e/redeem &ffor free rewards!");
                     player.closeInventory();
                     Button.playSuccess(player);
-
 
                     HCF.getInstance().getRedeemHandler().getRedeemMap().setToggled(player.getUniqueId(), true);
                 }

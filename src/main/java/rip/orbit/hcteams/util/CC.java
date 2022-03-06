@@ -6,8 +6,7 @@ import rip.orbit.hcteams.HCF;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CC
-{
+public class CC {
     public static String BLUE;
     public static String AQUA;
     public static String YELLOW;
@@ -40,6 +39,7 @@ public class CC
     public static String translate(String in) {
         return ChatColor.translateAlternateColorCodes('&', in);
     }
+
     public static String chat(String in) {
         return ChatColor.translateAlternateColorCodes('&', in);
     }
@@ -60,6 +60,82 @@ public class CC
             }
         }
         return toReturn;
+    }
+
+    public static byte getByChatColor(ChatColor color) {
+        switch (color) {
+            case DARK_RED:
+            case RED:
+                return (short) 14;
+            case BLUE:
+            case DARK_BLUE:
+                return (short) 11;
+            case AQUA:
+                return (short) 3;
+            case BLACK:
+                return (short) 15;
+            case DARK_AQUA:
+                return (short) 9;
+            case DARK_GRAY:
+                return (short) 7;
+            case DARK_GREEN:
+                return (short) 13;
+            case DARK_PURPLE:
+                return (short) 10;
+            case GOLD:
+                return (short) 1;
+            case GRAY:
+                return (short) 8;
+            case LIGHT_PURPLE:
+                return (short) 6;
+            case WHITE:
+                return (short) 0;
+            case YELLOW:
+                return (short) 4;
+            case GREEN:
+                return (short) 5;
+        }
+
+        return (short) 0;
+    }
+
+    public static String getNameByChatColor(ChatColor color) {
+        switch (color) {
+            case DARK_RED:
+                return "Dark Red";
+            case RED:
+                return "Red";
+            case BLUE:
+                return "Blue";
+            case DARK_BLUE:
+                return "Dark Blue";
+            case AQUA:
+                return "Aqua";
+            case BLACK:
+                return "Black";
+            case DARK_AQUA:
+                return "Cyan";
+            case DARK_GRAY:
+                return "Dark Gray";
+            case DARK_GREEN:
+                return "Dark Green";
+            case DARK_PURPLE:
+                return "Purple";
+            case GOLD:
+                return "Orange";
+            case GRAY:
+                return "Gray";
+            case LIGHT_PURPLE:
+                return "Pink";
+            case WHITE:
+                return "White";
+            case YELLOW:
+                return "Yellow";
+            case GREEN:
+                return "Green";
+        }
+
+        return "White";
     }
 
     static {

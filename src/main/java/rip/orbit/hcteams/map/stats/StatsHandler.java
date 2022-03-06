@@ -27,6 +27,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import rip.orbit.hcteams.HCF;
 import rip.orbit.hcteams.commands.staff.SOTWCommand;
+import rip.orbit.hcteams.commands.staff.SOTWCommand;
 import rip.orbit.hcteams.map.stats.command.StatsTopCommand;
 import rip.orbit.hcteams.map.stats.task.StatsTopTask;
 import rip.orbit.hcteams.team.Team;
@@ -225,7 +226,7 @@ public class StatsHandler implements Listener {
         UUID newSecondPlace = get(StatsTopCommand.StatsObjective.KILLS, 2).getOwner();
         UUID newThirdPlace = get(StatsTopCommand.StatsObjective.KILLS, 3).getOwner();
 
-        if (!SOTWCommand.isSOTWTimer()) {
+        if (!SOTWCommand.isSOTWTimer() || SOTWCommand.isMOTWTimer()) {
             if (firstUpdateComplete) {
                 if (newFirstPlace != oldFirstPlace) {
                     if (newFirstPlace != null) {

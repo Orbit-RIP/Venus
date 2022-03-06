@@ -3,7 +3,6 @@ package rip.orbit.hcteams;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import rip.orbit.hcteams.team.Team;
-import rip.orbit.hcteams.team.commands.team.TeamTopCommand;
 import rip.orbit.hcteams.util.CC;
 
 public class HCFConstants {
@@ -28,25 +27,23 @@ public class HCFConstants {
         return ChatColor.GOLD + "[" + Team.ALLY_COLOR + "AC: " + ChatColor.YELLOW + team.getName() + ChatColor.GOLD + "]" + Team.ALLY_COLOR + player.getName() + ": " + message;
     }
 
-    public static String publicChatFormat(Team team, String rankPrefix, String customPrefixString) {
-        String starting = CC.translate("&6[&c*&6] ");
-        //CC.translate(HCF.getInstance().getConfig().getString("nonefaction"));
+
+    public static String publicChatFormat(Team team, String rankPrefix, String customPrefixString, Player player) {
+        String starting = CC.translate("");
         if (team != null) {
-            starting = ChatColor.GOLD + "[" + HCF.getInstance().getServerHandler().getDefaultRelationColor() + team.getName() + ChatColor.GOLD + "] ";
+            starting = ChatColor.DARK_GRAY + "[" + HCF.getInstance().getServerHandler().getDefaultRelationColor() + team.getName() + ChatColor.DARK_GRAY + "] ";
 
         }
-        return starting + customPrefixString + rankPrefix + ChatColor.WHITE + "%s" + ChatColor.WHITE + ": %s";
+        return starting + customPrefixString + rankPrefix + ChatColor.WHITE + "%s" + ChatColor.WHITE + ": " + HCF.getInstance().getServerHandler().getChatColor(player) + "%s";
     }
 
     public static String publicChatFormatTwoPointOhBaby(Team team, String rankPrefix, String customPrefixString) {
         String starting = "";
+
         if (team != null) {
-            if (((TeamTopCommand.getSortedTeams().entrySet().iterator().next()).getKey()).equals(team)) {
-                starting = ChatColor.YELLOW + "[" + ChatColor.GOLD + team.getName() + ChatColor.YELLOW + "]";
-                return starting + customPrefixString + rankPrefix + ChatColor.WHITE + "%s" + ChatColor.WHITE + ": %s";
-            }
             starting = ChatColor.GOLD + "[" + HCF.getInstance().getServerHandler().getDefaultRelationColor() + team.getName() + ChatColor.GOLD + "]";
         }
+
         return starting + customPrefixString + rankPrefix + ChatColor.WHITE + "%s" + ChatColor.WHITE + ": %s";
     }
 }

@@ -53,6 +53,14 @@ public class AbilityCommand {
 		sender.sendMessage(CC.chat("&6&lAbility List&f: " + StringUtils.join(names, ", ")));
 	}
 
+	@Command(names = "ability resetcooldown", permission = "foxtrot.ability")
+	public static void resetcooldown(Player sender) {
+		for (Ability currentAbility : HCF.getInstance().getAbilityHandler().getAbilities()) {
+			currentAbility.addCooldown(sender.getPlayer(), 0);
+			currentAbility.cooldown().removeCooldown(sender.getPlayer());
+		}
+	}
+
 	@Command(names = {"ability preview"}, permission = "")
 	public static void showcase(Player sender) {
 

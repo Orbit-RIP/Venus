@@ -11,7 +11,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -21,6 +20,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import rip.orbit.hcteams.ability.AbilityHandler;
 import rip.orbit.hcteams.chat.ChatHandler;
 import rip.orbit.hcteams.chatgames.ChatGameHandler;
+import rip.orbit.hcteams.cheat.FastBowListener;
 import rip.orbit.hcteams.crates.CrateHandler;
 import rip.orbit.hcteams.deathmessage.DeathMessageHandler;
 import rip.orbit.hcteams.events.EventHandler;
@@ -35,6 +35,7 @@ import rip.orbit.hcteams.events.region.glowmtn.GlowHandler;
 import rip.orbit.hcteams.listener.*;
 import rip.orbit.hcteams.listener.fixes.*;
 import rip.orbit.hcteams.listener.kits.*;
+import rip.orbit.hcteams.loot.AirdropHandler;
 import rip.orbit.hcteams.map.MapHandler;
 import rip.orbit.hcteams.map.kits.KitListener;
 import rip.orbit.hcteams.nametags.ScoreboardManager;
@@ -53,6 +54,7 @@ import rip.orbit.hcteams.pvpclasses.pvpclasses.RogueClass;
 import rip.orbit.hcteams.reclaim.ReclaimHandler;
 import rip.orbit.hcteams.reclaim.config.ReclaimConfigFile;
 import rip.orbit.hcteams.redeem.RedeemHandler;
+import rip.orbit.hcteams.scoreboard.animation.AnimationHandler;
 import rip.orbit.hcteams.server.EnderpearlCooldownHandler;
 import rip.orbit.hcteams.server.ServerHandler;
 import rip.orbit.hcteams.server.task.BackupRunnable;
@@ -65,6 +67,7 @@ import rip.orbit.hcteams.team.commands.team.TeamClaimCommand;
 import rip.orbit.hcteams.team.commands.team.subclaim.TeamSubclaimCommand;
 import rip.orbit.hcteams.team.dtr.DTRHandler;
 import rip.orbit.hcteams.util.CC;
+import rip.orbit.hcteams.util.ConfigFile;
 import rip.orbit.hcteams.util.DiscordLogger;
 import rip.orbit.hcteams.util.RegenUtils;
 import rip.orbit.hcteams.util.menu.page.MenuListener;
@@ -83,7 +86,10 @@ public class HCF extends JavaPlugin {
 	@Getter private static HCF instance;
 	public static String MONGO_DB_NAME = "HCTeams";
 
+	private ConfigFile partnerConfig;
+
 	private MongoClient mongoPool;
+//	private WandererHandler wandererHandler;
 	private ChatHandler chatHandler;
 	private PvPClassHandler pvpClassHandler;
 	private CarePackageHandler carePackageHandler;
@@ -102,6 +108,8 @@ public class HCF extends JavaPlugin {
 	private GlowHandler glowHandler;
 	private RedeemHandler redeemHandler;
 	private PatchHandler patchHandler;
+	private AnimationHandler animationHandler;
+	private AirdropHandler airdropHandler;
 
 	private ReclaimConfigFile reclaimConfig;
 	private DiscordLogger discordLogger;
@@ -125,6 +133,7 @@ public class HCF extends JavaPlugin {
 
 		instance = this;
 		saveDefaultConfig();
+
 		try {
 			String host = getConfig().getString("Mongo.Host", "127.0.0.1");
 			String authDB = getConfig().getString("Mongo.AuthDB", "admin");
@@ -176,6 +185,8 @@ public class HCF extends JavaPlugin {
 			world.setGameRuleValue("doMobGriefing", "false");
 		}
 
+//		partnerConfig  = new ConfigFile(this,"partner", getDataFolder().getAbsolutePath());
+
 		EndListener.loadEndReturn();
 
 		new BukkitRunnable() {
@@ -190,12 +201,16 @@ public class HCF extends JavaPlugin {
 				if (players.isEmpty()) {
 					players.add("None");
 				}
-				getServer().broadcastMessage(ChatColor.GRAY + "");
-				getServer().broadcastMessage(CC.translate("&6Online Orbit Users &f: " + StringUtils.join(players, ", ")));
-				getServer().broadcastMessage(CC.translate("&fYou can purchase the Orbit rank at &6&ostore.orbit.rip"));
-				getServer().broadcastMessage(ChatColor.GRAY + "");
+
+				getServer().broadcastMessage("");
+				getServer().broadcastMessage(CC.translate("&6&lOnline Orbit Ranks"));
+				getServer().broadcastMessage("");
+				getServer().broadcastMessage(StringUtils.join(players, ", "));
+				getServer().broadcastMessage("");
+				getServer().broadcastMessage(CC.translate("&7Purchase these perks at &fhttps://store.orbit.rip/category/ranks"));
+				getServer().broadcastMessage("");
 			}
-		}.runTaskTimer(this, 200L, 18000L);
+		}.runTaskTimerAsynchronously(this, 600, 20 * 180);
 
 //		Bukkit.getScheduler().runTaskTimerAsynchronously(this, this::backupTeams, 20 * 60 * 30, 20 * 60 * 30);
 		Bukkit.getScheduler().runTaskTimerAsynchronously(this, new BackupRunnable(), 20 * 60, 20 * 60);
@@ -244,6 +259,7 @@ public class HCF extends JavaPlugin {
 		serverHandler = new ServerHandler();
 		mapHandler = new MapHandler();
 		mapHandler.load();
+		animationHandler = new AnimationHandler();
 		teamHandler = new TeamHandler();
 		chatGameHandler = new ChatGameHandler();
 		pollHandler = new PollHandler();
@@ -260,6 +276,7 @@ public class HCF extends JavaPlugin {
 		crateHandler = new CrateHandler();
 		discordLogger = new DiscordLogger(this);
 		patchHandler = new PatchHandler();
+		airdropHandler = new AirdropHandler();
 
 		if (getConfig().getBoolean("glowstoneMountain", false)) {
 			glowHandler = new GlowHandler();
@@ -309,6 +326,7 @@ public class HCF extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new SpawnTagListener(), this);
 		getServer().getPluginManager().registerEvents(new TeamListener(), this);
 //		getServer().getPluginManager().registerEvents(new WebsiteListener(), this);
+		getServer().getPluginManager().registerEvents(new FastBowListener(), this);
 		getServer().getPluginManager().registerEvents(new PotionLimiterListeners(), this);
 		getServer().getPluginManager().registerEvents(new EnchantmentLimiterListeners(), this);
 		getServer().getPluginManager().registerEvents(new TeamSubclaimCommand(), this);

@@ -33,6 +33,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.BlockVector;
 import rip.orbit.hcteams.HCF;
 import rip.orbit.hcteams.commands.staff.SOTWCommand;
+import rip.orbit.hcteams.commands.staff.SOTWCommand;
 import rip.orbit.hcteams.events.Event;
 import rip.orbit.hcteams.events.citadel.CitadelHandler;
 import rip.orbit.hcteams.server.RegionData;
@@ -131,7 +132,7 @@ public class FoxListener implements Listener {
 
 			event.getPlayer().teleport(HCF.getInstance().getServerHandler().getSpawnLocation());
 
-			if (SOTWCommand.getCustomTimers().get("&e&lSOTW") == null) {
+			if (SOTWCommand.getCustomTimers().get("&a&lSOTW ends in") == null) {
 				if (HCF.getInstance().getServerHandler().isStartingTimerEnabled()) {
 					HCF.getInstance().getPvPTimerMap().createStartingTimer(event.getPlayer().getUniqueId(), (int) TimeUnit.HOURS.toSeconds(1));
 				} else {
@@ -376,6 +377,36 @@ public class FoxListener implements Listener {
 		}
 	}
 
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onDamageWhilstMOTW(EntityDamageByEntityEvent event) {
+
+		if (event.getEntity() instanceof Player) {
+			if (event.getDamager() instanceof Player) {
+				Player damager = (Player) event.getDamager();
+				Player damaged = (Player) event.getEntity();
+				if (SOTWCommand.isMOTWTimer() && !SOTWCommand.hasMOTWEnabled(damager.getUniqueId())) {
+					if (SOTWCommand.isMOTWTimer() && SOTWCommand.hasMOTWEnabled(damaged.getUniqueId())) {
+						event.setCancelled(true);
+						return;
+					}
+				}
+			}
+		}
+		if (event.getEntity() instanceof Player) {
+			if (event.getDamager() instanceof Projectile) {
+				if (((Projectile)event.getDamager()).getShooter() instanceof Player) {
+					Player damager = (Player) ((Projectile) event.getDamager()).getShooter();
+					Player damaged = (Player) event.getEntity();
+					if (SOTWCommand.isMOTWTimer() && !SOTWCommand.hasMOTWEnabled(damager.getUniqueId())) {
+						if (SOTWCommand.isMOTWTimer() && SOTWCommand.hasMOTWEnabled(damaged.getUniqueId())) {
+							event.setCancelled(true);
+						}
+					}
+				}
+			}
+		}
+	}
+
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onHit(EntityDamageByEntityEvent event) {
 
@@ -403,6 +434,10 @@ public class FoxListener implements Listener {
 				return;
 		}
 
+		if (SOTWCommand.isMOTWTimer()) {
+			if (!SOTWCommand.hasMOTWEnabled(event.getDamager().getUniqueId()) || !SOTWCommand.hasMOTWEnabled(event.getEntity().getUniqueId()))
+				return;
+		}
 		Team team = HCF.getInstance().getTeamHandler().getTeam(damager.getUniqueId());
 
 		if (team != null) {
@@ -423,7 +458,7 @@ public class FoxListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onJoin(PlayerJoinEvent event) {
 		if (DTRBitmask.SAFE_ZONE.appliesAt(event.getPlayer().getLocation())) {
-			if (SOTWCommand.isSOTWTimer()) {
+			if (SOTWCommand.isSOTWTimer() || SOTWCommand.isMOTWTimer()) {
 				for (Player p : Bukkit.getOnlinePlayers()) {
 					p.hidePlayer(event.getPlayer());
 				}
@@ -618,7 +653,7 @@ public class FoxListener implements Listener {
 	@EventHandler
 	public void onTeleport(PlayerTeleportEvent event) {
 		if (DTRBitmask.SAFE_ZONE.appliesAt(event.getTo()) && !DTRBitmask.SAFE_ZONE.appliesAt(event.getFrom())) {
-			if (SOTWCommand.isSOTWTimer()) {
+			if (SOTWCommand.isSOTWTimer() || SOTWCommand.isMOTWTimer()) {
 				for (Player p : Bukkit.getOnlinePlayers()) {
 					if (event.getPlayer().hasMetadata("modmode")) continue;
 					p.hidePlayer(event.getPlayer());
@@ -627,7 +662,7 @@ public class FoxListener implements Listener {
 		}
 
 		if (DTRBitmask.SAFE_ZONE.appliesAt(event.getFrom()) && !DTRBitmask.SAFE_ZONE.appliesAt(event.getTo())) {
-			if (SOTWCommand.isSOTWTimer()) {
+			if (SOTWCommand.isSOTWTimer() || SOTWCommand.isMOTWTimer()) {
 				for (Player p : Bukkit.getOnlinePlayers()) {
 					if (event.getPlayer().hasMetadata("modmode")) continue;
 					p.showPlayer(event.getPlayer());
@@ -727,7 +762,7 @@ public class FoxListener implements Listener {
 			}
 
 			if (DTRBitmask.SAFE_ZONE.appliesAt(event.getTo()) && !DTRBitmask.SAFE_ZONE.appliesAt(event.getFrom())) {
-				if (SOTWCommand.isSOTWTimer()) {
+				if (SOTWCommand.isSOTWTimer() || SOTWCommand.isMOTWTimer()) {
 					for (Player p : Bukkit.getOnlinePlayers()) {
 						if (event.getPlayer().hasMetadata("modmode")) continue;
 						p.hidePlayer(event.getPlayer());
@@ -736,7 +771,7 @@ public class FoxListener implements Listener {
 			}
 
 			if (DTRBitmask.SAFE_ZONE.appliesAt(event.getFrom()) && !DTRBitmask.SAFE_ZONE.appliesAt(event.getTo())) {
-				if (SOTWCommand.isSOTWTimer()) {
+				if (SOTWCommand.isSOTWTimer() || SOTWCommand.isMOTWTimer()) {
 					for (Player p : Bukkit.getOnlinePlayers()) {
 						if (event.getPlayer().hasMetadata("modmode")) continue;
 						p.showPlayer(event.getPlayer());
@@ -765,8 +800,8 @@ public class FoxListener implements Listener {
 	public void onEntityDamaged(EntityDamageEvent event) {
 		if (event.getEntity() instanceof Player) {
 			if (event.getEntity() instanceof Player) {
-				if (SOTWCommand.isSOTWTimer()) {
-					if (!SOTWCommand.hasSOTWEnabled(event.getEntity().getUniqueId())) {
+				if (SOTWCommand.isSOTWTimer() || SOTWCommand.isMOTWTimer()) {
+					if (!SOTWCommand.hasSOTWEnabled(event.getEntity().getUniqueId()) || !SOTWCommand.hasMOTWEnabled(event.getEntity().getUniqueId())) {
 						event.setCancelled(true);
 					}
 				}

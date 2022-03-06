@@ -2,7 +2,6 @@ package rip.orbit.hcteams.ability;
 
 import cc.fyre.proton.Proton;
 import lombok.Getter;
-import rip.orbit.hcteams.ability.generator.GeneratorHandler;
 import rip.orbit.hcteams.ability.items.*;
 import rip.orbit.hcteams.ability.items.pocketbard.Regeneration;
 import rip.orbit.hcteams.ability.items.pocketbard.Resistance;
@@ -22,7 +21,6 @@ import java.util.List;
  */
 public class AbilityHandler {
 
-	@Getter private final GeneratorHandler generatorHandler;
 	@Getter private final List<Ability> abilities;
 	@Getter private final List<Ability> pocketbards;
 	@Getter private final Cooldowns abilityCD;
@@ -40,8 +38,6 @@ public class AbilityHandler {
 		Proton.getInstance().getCommandHandler().registerParameterType(Ability.class, new AbilityParameterType());
 
 		abilities.add(new Switcher());
-//		abilities.add(new Turret());
-//		abilities.add(new Dome());
 		abilities.add(new Recon());
 		abilities.add(new AntiBuildStick());
 		abilities.add(new AbilityInspector());
@@ -52,15 +48,16 @@ public class AbilityHandler {
 		abilities.add(new GhostMode());
 		abilities.add(new NinjaStar());
 		abilities.add(new GuardianAngel());
-//		abilities.add(new Voider());
 		abilities.add(new PocketBard());
+		abilities.add(new Medkit());
+		abilities.add(new PowerStone());
+		abilities.add(new FastTrack());
+		abilities.add(new FastBow());
 
 		pocketbards.add(new Strength());
 		pocketbards.add(new Resistance());
 		pocketbards.add(new Speed());
 		pocketbards.add(new Regeneration());
-
-		generatorHandler = new GeneratorHandler();
 
 	}
 

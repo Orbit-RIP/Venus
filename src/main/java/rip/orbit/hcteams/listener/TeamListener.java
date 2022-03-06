@@ -24,7 +24,6 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import rip.orbit.hcteams.HCF;
-import rip.orbit.hcteams.ability.generator.GeneratorHandler;
 import rip.orbit.hcteams.events.Event;
 import rip.orbit.hcteams.events.koth.KOTH;
 import rip.orbit.hcteams.events.region.cavern.CavernHandler;
@@ -37,7 +36,6 @@ import rip.orbit.hcteams.team.dtr.DTRBitmask;
 import rip.orbit.hcteams.team.event.PlayerBuildInOthersClaimEvent;
 import rip.orbit.hcteams.team.track.TeamActionTracker;
 import rip.orbit.hcteams.team.track.TeamActionType;
-import rip.orbit.hcteams.util.CC;
 import rip.orbit.hcteams.util.RegenUtils;
 import rip.orbit.hcteams.util.item.InventoryUtils;
 
@@ -138,17 +136,6 @@ public class TeamListener implements Listener {
 
     @EventHandler(priority=EventPriority.HIGH, ignoreCancelled=true)
     public void onBlockPlace(BlockPlaceEvent event) {
-        if (event.getItemInHand() != null) {
-            if (HCF.getInstance().getAbilityHandler().byName("dome").getStack().isSimilar(event.getItemInHand())) {
-                return;
-            }
-        }
-        if (HCF.getInstance().getServerHandler().isAdminOverride(event.getPlayer())
-                || HCF.getInstance().getServerHandler().isUnclaimedOrRaidable(event.getBlock().getLocation())) {
-            placeGenerator(event);
-            return;
-        }
-
         Team team = LandBoard.getInstance().getTeam(event.getBlock().getLocation());
 
         if (!team.isMember(event.getPlayer().getUniqueId())) {
@@ -193,8 +180,6 @@ public class TeamListener implements Listener {
                 event.setCancelled(true);
             }
             return;
-        } else {
-            placeGenerator(event);
         }
 
         if (!team.isCoLeader(event.getPlayer().getUniqueId())
@@ -209,27 +194,6 @@ public class TeamListener implements Listener {
         }
     }
 
-    public void placeGenerator(BlockPlaceEvent event) {
-        GeneratorHandler handler = HCF.getInstance().getAbilityHandler().getGeneratorHandler();
-        Player p = event.getPlayer();
-
-        if (event.getItemInHand() == null)
-            return;
-
-        if (event.getItemInHand().isSimilar(handler.replacedLevel(handler.getGeneratorItems().get(0), 1))) {
-            handler.place(p.getUniqueId(), event.getBlockPlaced().getLocation(), 1);
-            event.setBuild(true);
-            p.sendMessage(CC.translate("&aYou have successfully placed a generator."));
-        } else if (event.getItemInHand().isSimilar(handler.replacedLevel(handler.getGeneratorItems().get(1), 1))) {
-            handler.place(p.getUniqueId(), event.getBlockPlaced().getLocation(), 2);
-            event.setBuild(true);
-            p.sendMessage(CC.translate("&aYou have successfully placed a generator."));
-        } else if (event.getItemInHand().isSimilar(handler.replacedLevel(handler.getGeneratorItems().get(2), 1))) {
-            handler.place(p.getUniqueId(), event.getBlockPlaced().getLocation(), 3);
-            event.setBuild(true);
-            p.sendMessage(CC.translate("&aYou have successfully placed a generator."));
-        }
-    }
 
     @EventHandler(ignoreCancelled=true) // normal priority
     public void onBlockBreak(BlockBreakEvent event) {

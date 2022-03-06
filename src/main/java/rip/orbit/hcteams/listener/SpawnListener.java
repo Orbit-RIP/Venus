@@ -26,6 +26,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 import rip.orbit.hcteams.HCF;
 import rip.orbit.hcteams.commands.staff.SOTWCommand;
+import rip.orbit.hcteams.commands.staff.SOTWCommand;
 import rip.orbit.hcteams.events.Event;
 import rip.orbit.hcteams.events.koth.KOTH;
 import rip.orbit.hcteams.team.Team;
@@ -222,7 +223,7 @@ public class  SpawnListener implements Listener {
     public void onDrop(PlayerDropItemEvent event) {
         Team team = LandBoard.getInstance().getTeam(event.getPlayer().getLocation());
         if (team != null && team.hasDTRBitmask(DTRBitmask.SAFE_ZONE) && (HCF.getInstance().getServerHandler().isVeltKitMap()
-                || SOTWCommand.isSOTWTimer())) {
+                || SOTWCommand.isSOTWTimer()) || SOTWCommand.isMOTWTimer()) {
             event.getItemDrop().remove();
         }
     }

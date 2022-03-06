@@ -1,6 +1,7 @@
 package rip.orbit.hcteams.map;
 
 import cc.fyre.proton.Proton;
+import cc.fyre.proton.economy.EconomyHandler;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -110,6 +111,7 @@ public class MapHandler {
 		reloadConfig();
 
 		Proton.getInstance().getScoreboardHandler().setConfiguration(FoxtrotScoreboardConfiguration.create());
+		EconomyHandler.init();
 
 		Iterator<Recipe> recipeIterator = HCF.getInstance().getServer().recipeIterator();
 

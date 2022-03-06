@@ -4,6 +4,7 @@ import cc.fyre.proton.command.Command;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import rip.orbit.hcteams.commands.staff.SOTWCommand;
+import rip.orbit.hcteams.commands.staff.SOTWCommand;
 import rip.orbit.hcteams.map.game.menu.HostMenu;
 import rip.orbit.hcteams.server.SpawnTagHandler;
 import rip.orbit.hcteams.util.CC;
@@ -16,8 +17,8 @@ public class HostCommand {
             player.sendMessage(ChatColor.RED + "You can't host an event while spawn-tagged!");
             return;
         }
-        if (SOTWCommand.isSOTWTimer()) {
-            player.sendMessage(CC.translate("&cYou cannot do this whilst SOTW timer is active."));
+        if (SOTWCommand.isSOTWTimer() || SOTWCommand.isMOTWTimer()) {
+            player.sendMessage(CC.translate("&cYou cannot do this whilst SOTW/MOTW timer is active."));
             return;
         }
 

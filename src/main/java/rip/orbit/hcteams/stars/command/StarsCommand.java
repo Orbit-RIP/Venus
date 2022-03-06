@@ -5,6 +5,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import rip.orbit.hcteams.HCF;
 import rip.orbit.hcteams.commands.staff.SOTWCommand;
+import rip.orbit.hcteams.commands.staff.SOTWCommand;
 import rip.orbit.hcteams.persist.maps.StarsMap;
 import rip.orbit.hcteams.stars.menu.StarShopMenu;
 import rip.orbit.hcteams.team.claims.LandBoard;
@@ -29,15 +30,15 @@ public class StarsCommand {
 
 	@Command(names = "starshop", permission = "")
 	public static void starshop(Player sender) {
-		if (LandBoard.getInstance().getTeam(sender.getLocation()) != null && !SOTWCommand.isSOTWTimer() && !LandBoard.getInstance().getTeam(sender.getLocation()).hasDTRBitmask(DTRBitmask.SAFE_ZONE)) {
+		if (LandBoard.getInstance().getTeam(sender.getLocation()) != null && !SOTWCommand.isSOTWTimer() && !SOTWCommand.isMOTWTimer() && !LandBoard.getInstance().getTeam(sender.getLocation()).hasDTRBitmask(DTRBitmask.SAFE_ZONE)) {
 			sender.sendMessage(CC.translate("&cYou cannot use this here without sotw timer on."));
 			return;
 		}
-		if (LandBoard.getInstance().getTeam(sender.getLocation()) == null && !SOTWCommand.isSOTWTimer()) {
+		if (LandBoard.getInstance().getTeam(sender.getLocation()) == null && !SOTWCommand.isSOTWTimer() && !SOTWCommand.isMOTWTimer()) {
 			sender.sendMessage(CC.translate("&cYou cannot use this whilst not in a safezone."));
 			return;
 		}
-		if (LandBoard.getInstance().getTeam(sender.getLocation()) != null && !LandBoard.getInstance().getTeam(sender.getLocation()).hasDTRBitmask(DTRBitmask.SAFE_ZONE) && !SOTWCommand.isSOTWTimer()) {
+		if (LandBoard.getInstance().getTeam(sender.getLocation()) != null && !LandBoard.getInstance().getTeam(sender.getLocation()).hasDTRBitmask(DTRBitmask.SAFE_ZONE) && !SOTWCommand.isSOTWTimer() && !SOTWCommand.isMOTWTimer()) {
 			sender.sendMessage(CC.translate("&cYou cannot use this whilst not in a safezone."));
 			return;
 		}

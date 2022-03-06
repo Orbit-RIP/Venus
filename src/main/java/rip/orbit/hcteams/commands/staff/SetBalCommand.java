@@ -1,7 +1,7 @@
 package rip.orbit.hcteams.commands.staff;
 
-import cc.fyre.proton.Proton;
 import cc.fyre.proton.command.Command;
+import cc.fyre.proton.economy.EconomyHandler;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import rip.orbit.hcteams.HCF;
@@ -9,6 +9,7 @@ import rip.orbit.hcteams.HCF;
 import java.util.UUID;
 
 public class SetBalCommand {
+
 
     @Command(names={ "SetBal" }, permission="orbit.admin")
     public static void setBal(CommandSender sender, @cc.fyre.proton.command.param.Parameter(name="player") UUID player, @cc.fyre.proton.command.param.Parameter(name="amount") float amount) {
@@ -29,7 +30,7 @@ public class SetBalCommand {
         }
 
         Player targetPlayer = HCF.getInstance().getServer().getPlayer(player);
-        Proton.getInstance().getEconomyHandler().setBalance(player, amount);
+        EconomyHandler.setBalance(player, amount);
 
         if (sender != targetPlayer) {
             sender.sendMessage("§6Balance for §e" + player + "§6 set to §e$" + amount);

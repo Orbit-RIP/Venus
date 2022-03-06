@@ -108,6 +108,9 @@ public class ServerHandler {
 	private boolean blockRemovalEnabled;
 
 	@Getter
+	private Map<UUID, ChatColor> chatColor = new ConcurrentHashMap<>();
+
+	@Getter
 	private boolean rodPrevention;
 	@Getter
 	private boolean skybridgePrevention;
@@ -365,6 +368,12 @@ public class ServerHandler {
 				}
 			}
 		}.runTaskTimer(HCF.getInstance(), 20L, 20L);
+	}
+
+	public ChatColor getChatColor(Player player) {
+		if (this.chatColor.get(player.getUniqueId()) == null) return ChatColor.WHITE;
+
+		return this.chatColor.get(player.getUniqueId());
 	}
 
 	public RegionData getRegion(Team ownerTo, Location location) {

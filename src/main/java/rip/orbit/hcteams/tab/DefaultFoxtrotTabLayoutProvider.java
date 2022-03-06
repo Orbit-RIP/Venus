@@ -1,5 +1,6 @@
 package rip.orbit.hcteams.tab;
 
+import cc.fyre.proton.Proton;
 import cc.fyre.proton.tab.construct.TabLayout;
 import cc.fyre.proton.tab.provider.LayoutProvider;
 import cc.fyre.proton.util.TimeUtils;
@@ -34,7 +35,7 @@ public class DefaultFoxtrotTabLayoutProvider implements LayoutProvider {
         TabLayout layout = TabLayout.create(player);
         TabListMode mode = HCF.getInstance().getTabListModeMap().getTabListMode(player.getUniqueId());
 
-        String serverName = HCF.getInstance().getServerHandler().getTabServerName();
+        String serverName = Proton.getInstance().getScoreboardHandler().getConfiguration().getTitleGetter().getTitle(player);
         Team team = HCF.getInstance().getTeamHandler().getTeam(player);
         String color = HCF.getInstance().getServerHandler().getTabSectionColor();
         String second = HCF.getInstance().getServerHandler().getTabInfoColor();

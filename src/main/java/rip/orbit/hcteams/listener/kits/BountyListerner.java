@@ -2,7 +2,6 @@ package rip.orbit.hcteams.listener.kits;
 
 import cc.fyre.proton.Proton;
 import cc.fyre.proton.command.Command;
-import cc.fyre.proton.command.param.Parameter;
 import cc.fyre.proton.util.ItemBuilder;
 import com.google.common.collect.ImmutableList;
 import lombok.Getter;
@@ -17,6 +16,7 @@ import org.bukkit.event.entity.PotionEffectAddEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 import rip.orbit.hcteams.HCF;
+import rip.orbit.hcteams.commands.staff.SOTWCommand;
 import rip.orbit.hcteams.commands.staff.SOTWCommand;
 import rip.orbit.hcteams.team.Team;
 import rip.orbit.hcteams.team.claims.LandBoard;
@@ -58,7 +58,7 @@ public class BountyListerner implements Listener {
 
     private void checkBounty() {
 
-        if (SOTWCommand.isSOTWTimer()) {
+        if (SOTWCommand.isSOTWTimer() || SOTWCommand.isMOTWTimer()) {
             currentBountyPlayer = null;
             return;
         }
@@ -88,7 +88,7 @@ public class BountyListerner implements Listener {
 
     private void newBounty() {
 
-        if (SOTWCommand.isSOTWTimer()) {
+        if (SOTWCommand.isSOTWTimer() || SOTWCommand.isMOTWTimer()) {
             currentBountyPlayer = null;
             return;
         }

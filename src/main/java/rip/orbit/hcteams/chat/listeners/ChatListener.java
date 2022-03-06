@@ -19,7 +19,7 @@ import rip.orbit.hcteams.team.commands.team.TeamShadowMuteCommand;
 import rip.orbit.hcteams.team.track.TeamActionTracker;
 import rip.orbit.hcteams.team.track.TeamActionType;
 import rip.orbit.nebula.Nebula;
-import rip.orbit.nebula.profile.Profile;
+import rip.orbit.nebula.util.CC;
 
 import java.util.Map;
 import java.util.UUID;
@@ -56,10 +56,9 @@ public class ChatListener implements Listener {
 
         Team playerTeam = HCF.getInstance().getTeamHandler().getTeam(event.getPlayer());
 
-        Profile profile = Nebula.getInstance().getProfileHandler().fromUuid(event.getPlayer().getUniqueId());
-        String rankPrefix = profile.getActiveRank().getPrefix() + profile.getFancyName();
+        String rankPrefix = Nebula.getInstance().getProfileHandler().fromUuid(event.getPlayer().getUniqueId()).getActiveRank().getPrefix();
 
-        String customPrefix = (profile.getActivePrefix() == null ? "" : profile.getActivePrefix().getDisplay()) + " " + getCustomPrefix(event.getPlayer().getUniqueId());
+        String customPrefix = "";
         ChatMode playerChatMode = HCF.getInstance().getChatModeMap().getChatMode(event.getPlayer().getUniqueId());
         ChatMode forcedChatMode = ChatMode.findFromForcedPrefix(event.getMessage().charAt(0));
         ChatMode finalChatMode;
@@ -85,7 +84,10 @@ public class ChatListener implements Listener {
         }
 
         if (finalChatMode != ChatMode.PUBLIC) {
-            if (finalChatMode == ChatMode.OFFICER && !playerTeam.isCaptain(event.getPlayer().getUniqueId()) && !playerTeam.isCoLeader(event.getPlayer().getUniqueId()) && !playerTeam.isOwner(event.getPlayer().getUniqueId())) {
+            if (playerTeam == null) {
+                event.getPlayer().sendMessage(ChatColor.RED + "You can't speak in non-public chat if you're not in a team!");
+                return;
+            } else if (finalChatMode == ChatMode.OFFICER && !playerTeam.isCaptain(event.getPlayer().getUniqueId()) && !playerTeam.isCoLeader(event.getPlayer().getUniqueId()) && !playerTeam.isOwner(event.getPlayer().getUniqueId())) {
                 event.getPlayer().sendMessage(ChatColor.RED + "You can't speak in officer chat if you're not an officer!");
                 return;
             }
@@ -98,10 +100,12 @@ public class ChatListener implements Listener {
                     return;
                 }
 
-                String publicChatFormat = HCFConstants.publicChatFormat(playerTeam, rankPrefix, customPrefix);
+                if (Nebula.getInstance().getProfileHandler().fromUuid(event.getPlayer().getUniqueId()).getActivePrefix() != null) {
+                    customPrefix = Nebula.getInstance().getProfileHandler().fromUuid(event.getPlayer().getUniqueId()).getActivePrefix().getDisplay() + CC.translate("&r ");
+                }
 
-                String finalMessage = String.format(publicChatFormat, "", event.getMessage());
-
+                String publicChatFormat = HCFConstants.publicChatFormat(playerTeam, rankPrefix, customPrefix, event.getPlayer());
+                String finalMessage = String.format(publicChatFormat, event.getPlayer().getDisplayName(), event.getMessage());
 
                 for (Player player : event.getRecipients()) {
                     if (playerTeam == null) {

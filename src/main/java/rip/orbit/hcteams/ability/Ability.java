@@ -127,11 +127,6 @@ public abstract class Ability implements Listener {
 //			player.sendMessage(CC.translate("&cYou cannot do this for &l" + Dome.antiAbility.getRemaining(player)));
 //			return false;
 
-		if (player.getLocation().distance(player.getWorld().getSpawnLocation()) < 850) {
-			player.sendMessage(CC.chat("&cYou cannot use ability items before 850 blocks."));
-			return false;
-		}
-
 		if (cooldown().onCooldown(player)) {
 			player.sendMessage(CC.chat("&cYou are currently on " + displayName() + "&c cooldown for &l" + cooldown().getRemaining(player)));
 			return false;
@@ -160,6 +155,11 @@ public abstract class Ability implements Listener {
 		}
 		if (SOTWCommand.isSOTWTimer() && !SOTWCommand.hasSOTWEnabled(player.getUniqueId())) {
 			player.sendMessage(CC.chat("&cYou have to be sotw enabled to do this."));
+			return false;
+		}
+
+		if (SOTWCommand.isMOTWTimer() && !SOTWCommand.hasMOTWEnabled(player.getUniqueId())) {
+			player.sendMessage(CC.chat("&cYou have to be motw enabled to do this."));
 			return false;
 		}
 

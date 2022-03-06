@@ -322,6 +322,7 @@ public class CombatLoggerListener implements Listener {
             return;
         }
 
+
         boolean spawnCombatLogger = false;
 
         for (Entity entity : event.getPlayer().getNearbyEntities(40, 40, 40)) {

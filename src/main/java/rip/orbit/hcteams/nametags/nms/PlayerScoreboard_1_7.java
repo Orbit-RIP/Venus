@@ -11,6 +11,7 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Team;
 import rip.orbit.hcteams.HCF;
 import rip.orbit.hcteams.commands.staff.SOTWCommand;
+import rip.orbit.hcteams.commands.staff.SOTWCommand;
 import rip.orbit.hcteams.nametags.PlayerScoreboard;
 import rip.orbit.hcteams.nametags.ScoreboardInput;
 import rip.orbit.hcteams.nametags.base.ScoreboardBase_1_7;
@@ -248,7 +249,7 @@ public class PlayerScoreboard_1_7 extends ScoreboardBase_1_7 implements PlayerSc
 					this.addAndUpdate(online, nametag, this.archers);
 				} else if (HCF.getInstance().getPvPTimerMap().hasTimer(online.getUniqueId())) {
 					this.addAndUpdate(online, nametag, this.sotw);
-				} else if (SOTWCommand.isSOTWTimer() && !SOTWCommand.hasSOTWEnabled(online.getUniqueId())) {
+				} else if (SOTWCommand.isSOTWTimer() && !SOTWCommand.hasSOTWEnabled(online.getUniqueId()) || SOTWCommand.isMOTWTimer() && !SOTWCommand.hasMOTWEnabled(online.getUniqueId())) {
 					this.addAndUpdate(online, nametag, this.sotw);
 				} else {
 					this.addAndUpdate(online, nametag, this.enemies);
@@ -271,7 +272,7 @@ public class PlayerScoreboard_1_7 extends ScoreboardBase_1_7 implements PlayerSc
 				this.addAndUpdate(online, nametag, this.archers);
 			} else if (HCF.getInstance().getPvPTimerMap().hasTimer(online.getUniqueId())) {
 				this.addAndUpdate(online, nametag, this.sotw);
-			} else if (SOTWCommand.isSOTWTimer() && !SOTWCommand.hasSOTWEnabled(online.getUniqueId())) {
+			} else if (SOTWCommand.isSOTWTimer() && !SOTWCommand.hasSOTWEnabled(online.getUniqueId()) || SOTWCommand.isMOTWTimer() && !SOTWCommand.hasMOTWEnabled(online.getUniqueId())) {
 				this.addAndUpdate(online, nametag, this.sotw);
 			} else {
 				this.addAndUpdate(online, nametag, this.enemies);
